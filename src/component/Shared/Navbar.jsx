@@ -17,10 +17,10 @@ const Navbar = () => {
   </li>
   <li>
     <Link
-      to="/"
+      to="/category"
       className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
     >
-      Features
+     category
     </Link>
   </li>
   <li>

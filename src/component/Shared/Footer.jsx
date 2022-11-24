@@ -17,7 +17,7 @@ const Footer = () => {
                   to="/"
                   className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
                 >
-                  News
+                  Dell
                 </Link>
               </li>
               <li>
@@ -25,7 +25,7 @@ const Footer = () => {
                   to="/"
                   className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
                 >
-                  World
+                 HP
                 </Link>
               </li>
               <li>
@@ -33,7 +33,7 @@ const Footer = () => {
                   to="/"
                   className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
                 >
-                  Games
+                  Lenovo
                 </Link>
               </li>
               <li>
@@ -41,7 +41,7 @@ const Footer = () => {
                   to="/"
                   className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
                 >
-                  References
+                 Apple
                 </Link>
               </li>
             </ul>
