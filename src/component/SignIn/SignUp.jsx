@@ -1,10 +1,40 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthProvider';
+import toast from 'react-hot-toast';
 
 const SignUp = () => {
+  const { createUser, updateUserProfile} = useContext(AuthContext);
+
+  const handleSubmit = event => {
+     event.preventDefault()
+     const form = event.target;
+     const email = form.email.value;
+     const name = form.name.value;
+     const password = form.password.value;
+    //  console.log(email,name,password);
+  
+    createUser(email,password)
+    .then(reult => {
+      const user = reult.user;
+      console.log(user);
+      updateUserProfile(name)
+      .then(() => {       
+        console.log(user);
+        toast.success('SignUp Success')
+      })
+      .then(error => console.log(error.message))
+    })
+    .then(err => {
+      console.log(err);
+    })
+
+  }
+
+
   return (
     <div className="flex max-w-md p-2 rounded-md border-2 shadow-md mx-auto mb-3">
-    <form className="space-y-2 mx-auto">
+    <form onSubmit={handleSubmit}  className="space-y-2 mx-auto" >
       <h1 className="my-1 text-center text-3xl font-bold">Sign Up</h1>
       <div className="space-y-4">
         <div>
@@ -60,7 +90,6 @@ const SignUp = () => {
           <Link to="/signIn" className="hover:underline ">
             Sign in
           </Link>
-          .
         </p>
       </div>
     </form>
