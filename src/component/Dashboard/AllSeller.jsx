@@ -12,6 +12,7 @@ const AllSeller = () => {
         <th></th>
         <th>Seller's Name</th>
         <th>Email</th>
+        <th>Verify</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -21,6 +22,7 @@ const AllSeller = () => {
         <th>1</th>
         <td>Cy ikaihd</td>
         <td>Quality Control Specialist</td>
+        <td><button className='btn btn-sm bg-green-500 text-black border-none'>Verify</button></td>
         <td><button className='btn btn-sm bg-error border-none'>Delete</button></td>
       </tr>
       {/* <!-- row 2 --> */}
@@ -28,6 +30,7 @@ const AllSeller = () => {
         <th>2</th>
         <td>Hart Hagerty</td>
         <td>Desktop Support Technician</td>
+        <td><button className='btn btn-sm bg-green-500 text-black border-none'>Verify</button></td>
         <td><button className='btn btn-sm bg-error border-none'>Delete</button></td>
       </tr>
     </tbody>

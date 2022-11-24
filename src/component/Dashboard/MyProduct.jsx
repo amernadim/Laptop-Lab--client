@@ -8,11 +8,6 @@ const MyProduct = () => {
       {/* <!-- head --> */}
       <thead>
         <tr>
-          {/* <th>
-            <label>
-              <input type="checkbox" className="checkbox" />
-            </label>
-          </th> */}
           <th>Product</th>
           <th>Price</th>
           <th>Status</th>

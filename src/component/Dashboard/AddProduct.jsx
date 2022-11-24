@@ -112,7 +112,7 @@ const AddProduct = () => {
           <div className="col-span-full sm:col-span-2">
             <label className="text-md">Category</label>
             <select name="category" className="select select-sm select-bordered  w-full px-3 rounded-md bg-white" >
-              <option selected>Dell</option>
+              <option>Dell</option>
               <option>HP</option>
               <option>Lenovo</option>
             </select>
