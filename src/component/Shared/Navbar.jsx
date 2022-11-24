@@ -33,7 +33,7 @@ const Navbar = () => {
   </li>
   <li>
     <Link
-      to="/"
+      to="/dashboard"
       className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
     >
     Dashboard
@@ -48,7 +48,7 @@ const Navbar = () => {
     <>
       <li>
           <Link
-            to="/"
+            to="/signIn"
             className="btn btn-sm"
           >
             Sign In
@@ -57,7 +57,7 @@ const Navbar = () => {
 
       <li>
           <Link
-            to="/"
+            to="/signUp"
             className="btn btn-sm"
           >
             Sign Up
@@ -141,6 +141,8 @@ const Navbar = () => {
         </div>
       )}
     </div>
+
+    
   </div>
 </div>
   );
