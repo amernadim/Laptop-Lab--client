@@ -19,7 +19,8 @@ const DashboardLayout = () => {
         <li className='btn btn-md mt-2'><Link className='' to="/dashboard/myOrders">My Order</Link></li>
         <li className='btn btn-md mt-2'><Link to="/dashboard/addProduct">Add A Product</Link></li>
         <li className='btn btn-md mt-2'><Link to="/dashboard/allSeller">All Sellers</Link></li>      
-        <li className='btn btn-md mt-2'><Link to="/dashboard/allUser">All User</Link></li>      
+        <li className='btn btn-md mt-2'><Link to="/dashboard/allUser">All Buyers</Link></li>      
+        <li className='btn btn-md mt-2'><Link to="/dashboard/myProducts">My Products</Link></li>      
     </ul> 
    </div>
   </div>     

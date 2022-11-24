@@ -25,7 +25,7 @@ const Navbar = () => {
   </li>
   <li>
     <Link
-      to="/"
+      to="/blog"
       className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
     >
       Blog
@@ -61,6 +61,15 @@ const Navbar = () => {
             className="btn btn-sm"
           >
             Sign Up
+          </Link>
+       </li>
+
+      <li>
+          <Link
+            to=""
+            className="btn btn-sm"
+          >
+            LogOut
           </Link>
        </li>
     </>
