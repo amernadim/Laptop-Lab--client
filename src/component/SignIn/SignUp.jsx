@@ -23,9 +23,9 @@ const SignUp = () => {
         console.log(user);
         toast.success('SignUp Success')
       })
-      .then(error => console.log(error.message))
+      .catch(error => console.log(error.message))
     })
-    .then(err => {
+    .catch(err => {
       console.log(err);
     })
 
