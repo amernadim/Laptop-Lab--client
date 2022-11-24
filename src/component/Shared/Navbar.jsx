@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import {XMarkIcon,Bars3Icon } from '@heroicons/react/24/solid'
+import {XMarkIcon,Bars3Icon,PlayIcon } from '@heroicons/react/24/solid'
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -89,7 +89,12 @@ const Navbar = () => {
         }
     </ul>
 
-    <div className="lg:hidden z-10">
+      {/* dashboard open icon */}
+    <label tabIndex={2} htmlFor="dashboard-drawer" className="btn btn-ghost lg:hidden">
+        <PlayIcon className='w-6 h-6'/>    
+    </label>
+
+    <div className="lg:hidden z-20">
       <button
         aria-label="Open Menu"
         onClick={() => setIsMenuOpen(true)}
@@ -141,8 +146,6 @@ const Navbar = () => {
         </div>
       )}
     </div>
-
-    
   </div>
 </div>
   );
