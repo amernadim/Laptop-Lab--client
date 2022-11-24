@@ -89,7 +89,7 @@ const Navbar = () => {
         }
     </ul>
 
-    <div className="lg:hidden">
+    <div className="lg:hidden z-10">
       <button
         aria-label="Open Menu"
         onClick={() => setIsMenuOpen(true)}
