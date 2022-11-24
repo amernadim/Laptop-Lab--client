@@ -4,7 +4,7 @@ import laptop from '../../../assets/image/laptop.png';
 const ProductsCategories = () => {
   return (
     <div className='mt-5'>
-      <h2 className='text-center text-3xl font-bold mt-5'>Products Categories</h2>
+      <h2 className='text-center text-3xl font-semibold mt-5'>Laptop Categories</h2>
       <div className='cetegorise md:flex justify-between w-11/12 mx-auto gap-2 mt-5 max-lg:2xl'>
 
       <div className='item flex gap-6 bg-neutral p-3 justify-center items-center px-6 rounded-sm m-2 w-full'>

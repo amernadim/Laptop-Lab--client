@@ -4,7 +4,7 @@ import {CheckBadgeIcon} from '@heroicons/react/24/solid'
 const AdvertisedItems = () => {
   return (
   <>
-  <h2 className='text-center text-3xl font-bold mt-5'> Advertised Item</h2>
+  <h2 className='text-center text-3xl font-semibold mt-5'> Advertised Item</h2>
 
   <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 w-11/12 mx-auto mt-5'>
       
