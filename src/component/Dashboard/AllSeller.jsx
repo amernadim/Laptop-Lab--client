@@ -1,4 +1,5 @@
 import React from 'react';
+import {CheckBadgeIcon} from '@heroicons/react/24/solid';
 
 const AllSeller = () => {
   return (
@@ -20,7 +21,11 @@ const AllSeller = () => {
       {/* <!-- row 1 --> */}
       <tr>
         <th>1</th>
-        <td>Cy ikaihd</td>
+        <td >
+         <div className='flex items-center gap-1'>
+         <h2>Cy ikaihd </h2><CheckBadgeIcon className='w-6 h-4 text-blue-600'/> 
+          </div>      
+        </td>
         <td>Quality Control Specialist</td>
         <td><button className='btn btn-sm bg-green-500 text-black border-none'>Verify</button></td>
         <td><button className='btn btn-sm bg-error border-none'>Delete</button></td>
