@@ -29,6 +29,7 @@ const AdvertisedItems = () => {
           <div className="card-actions mt-3">
             <button className="btn btn-sm">Book Now</button>
           </div>
+        <button className='text-red-600 hover:underline'>Report to Admin</button>
         </div>
       </div>
       

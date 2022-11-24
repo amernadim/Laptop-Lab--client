@@ -4,17 +4,18 @@ import Category from "../../component/Category/Category";
 import AddProduct from "../../component/Dashboard/AddProduct";
 import AllSeller from "../../component/Dashboard/AllSeller";
 import AllUser from "../../component/Dashboard/AllUser";
-// import Dashboard from "../../component/Dashboard/Dashboard/Dashboard";
 import MyOrders from "../../component/Dashboard/MyOrders";
 import MyProduct from "../../component/Dashboard/MyProduct";
+import ReportToAdmin from "../../component/Dashboard/ReportToAdmin";
 import Home from "../../component/Home/Home/Home";
+import ErrorPage from "../../component/Shared/ErrorPage";
 import SignIn from "../../component/SignIn/SignIn";
 import SignUp from "../../component/SignIn/SignUp";
 import DashboardLayout from "../../layout/DashboardLayout";
 import Root from "../../layout/Root";
 
 export const router = createBrowserRouter([
-  {path : '/' , element : <Root></Root> , children : [
+  {path : '/' , element : <Root></Root> , errorElement: <ErrorPage/>, children : [
     {
       path : '/' , 
       element : <Home></Home>
@@ -40,7 +41,7 @@ export const router = createBrowserRouter([
      element : <Category></Category>
     },
   ]},
-  {path : '/dashboard' , element : <DashboardLayout/>, children : [
+  {path : '/dashboard' , element : <DashboardLayout/>, errorElement : <ErrorPage/>, children : [
     {
       path : '/dashboard/myOrders' , element : <MyOrders/>
     },
@@ -55,6 +56,9 @@ export const router = createBrowserRouter([
     },
     {
       path : '/dashboard/allUser' , element : <AllUser/>
+    },
+    {
+      path : '/dashboard/reportToAdmin' , element : <ReportToAdmin/>
     },
   ]}
 ])

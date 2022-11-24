@@ -39,7 +39,7 @@ const SignIn = () => {
               Login As a
             </label>
             <select name="loginAs" className="select select-sm select-bordered max-w-x w-full px-3 rounded-sm bg-white max-w-xs my-1" >
-              <option selected>User</option>
+              <option >User</option>
               <option>Seller</option>
             </select>
           </div>

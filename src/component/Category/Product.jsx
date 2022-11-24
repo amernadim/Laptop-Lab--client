@@ -30,6 +30,7 @@ const Product = () => {
         <p>Seller Name :</p>
         <span><CheckBadgeIcon className='w-6 h-4 text-blue-600'/></span>
       </div>
+     <button className='text-red-600 hover:underline'>Report to Admin</button>
       <div className="mt-3 text-center">
           <label htmlFor="bookingModal" className="btn btn-sm">Book Now</label>
       </div>

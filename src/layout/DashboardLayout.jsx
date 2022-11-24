@@ -21,6 +21,7 @@ const DashboardLayout = () => {
         <li className='btn btn-md mt-2'><Link to="/dashboard/allSeller">All Sellers</Link></li>      
         <li className='btn btn-md mt-2'><Link to="/dashboard/allUser">All Buyers</Link></li>      
         <li className='btn btn-md mt-2'><Link to="/dashboard/myProducts">My Products</Link></li>      
+        <li className='btn btn-md mt-2'><Link to="/dashboard/reportToAdmin">Report To Admin</Link></li>      
     </ul> 
    </div>
   </div>     
