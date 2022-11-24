@@ -4,8 +4,14 @@ import { XMarkIcon, Bars3Icon, PlayIcon } from "@heroicons/react/24/solid";
 import { AuthContext } from "../../context/AuthProvider";
 
 const Navbar = () => {
-  const { user } = useContext(AuthContext);
+  const { user,logout } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleLogout = () => {
+    logout()
+    .then(() => {})
+    .catch(error => console.log(error))
+  }
 
   const menuItem = (
     <>
@@ -46,11 +52,11 @@ const Navbar = () => {
 
   const menuBtn = (
     <>
-      {user?.uid ? (
+      {user?.email ? (
         <li>
-          <Link to="" className="btn btn-sm">
+          <button onClick={handleLogout} className="btn btn-sm">
             LogOut
-          </Link>
+          </button>
         </li>
       ) : (
         <>

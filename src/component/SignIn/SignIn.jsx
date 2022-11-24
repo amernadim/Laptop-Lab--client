@@ -20,10 +20,14 @@ const SignIn = () => {
     .then(result => {
       const user = result.user;
       toast.success('Login Successfully');
+      form.reset()
       navigate('/')
       console.log(user);
     })
-    .catch(error => console.log(error))
+    .catch(error => {
+      console.log(error)
+      toast.error(error.message)
+    })
  
  }
 
@@ -37,6 +41,7 @@ const SignIn = () => {
   })
   .catch(error => {
     console.log(error);
+    toast.error(error.message)
   })
  }
 
