@@ -13,6 +13,7 @@ const SignUp = () => {
      const email = form.email.value;
      const name = form.name.value;
      const password = form.password.value;
+     const role = form.loginAs.value;
     //  console.log(email,name,password);
   
     createUser(email,password)
@@ -24,6 +25,7 @@ const SignUp = () => {
         console.log(user);
         toast.success('SignUp Success')
         form.reset()
+        saveUser(email,name,role)
         navigate('/')
       })
       .catch(error => {
@@ -37,6 +39,22 @@ const SignUp = () => {
 
   }
 
+
+const saveUser = (email,name, role) =>{
+  const user ={email,name, role};
+  fetch(`http://localhost:5000/user/${email}`, {
+      method: 'PUT',
+      headers: {
+          'content-type': 'application/json'
+      },
+      body: JSON.stringify(user)
+  })
+  .then(res => res.json())
+  .then(data =>{
+      console.log(data);
+  })
+
+ }
 
   return (
     <div className="flex max-w-md p-2 rounded-md border-2 shadow-md mx-auto mb-3">
@@ -80,6 +98,15 @@ const SignUp = () => {
             className="w-full px-3 py-2 rounded-sm "
             required
           />
+        </div>
+        <div>
+            <label htmlFor="loginAs" className="text-sm">
+              SignUp As 
+            </label>
+            <select name="loginAs" className="select select-sm select-bordered max-w-x w-full px-3 rounded-sm bg-white max-w-xs my-1" required>
+              <option >User</option>
+              <option >Seller</option>
+            </select>
         </div>
       </div>
       <div className="space-y-2">

@@ -15,7 +15,7 @@ const SignIn = () => {
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    const loginAs = form.loginAs.value;
+    const role = form.loginAs.value;
     // console.log(email,loginAs,password);
 
     signIn(email,password)
@@ -24,6 +24,9 @@ const SignIn = () => {
       toast.success('Login Successfully');
       form.reset()
       navigate(from, {replace : true});
+
+      saveUser(email,user?.displayName,role)
+
       console.log(user);
     })
     .catch(error => {
@@ -39,12 +42,30 @@ const SignIn = () => {
     const user = result.user;
     console.log(user);
     toast.success('Login Successfully');
+    const role = "User" ;
+    saveUser(user?.email,user?.displayName, role)
     navigate(from, {replace : true});
   })
   .catch(error => {
     console.log(error);
     toast.error(error.message)
   })
+ }
+
+ const saveUser = (email,name, role) =>{
+  const user ={email,name, role};
+  fetch(`http://localhost:5000/user/${email}`, {
+      method: 'PUT',
+      headers: {
+          'content-type': 'application/json'
+      },
+      body: JSON.stringify(user)
+  })
+  .then(res => res.json())
+  .then(data =>{
+      console.log(data);
+  })
+
  }
 
 
@@ -82,7 +103,7 @@ const SignIn = () => {
           </div>
           <div>
             <label htmlFor="loginAs" className="text-sm">
-              Login As a
+              SignIn As 
             </label>
             <select name="loginAs" className="select select-sm select-bordered max-w-x w-full px-3 rounded-sm bg-white max-w-xs my-1" required>
               <option >User</option>
