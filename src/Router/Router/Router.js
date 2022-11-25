@@ -38,8 +38,9 @@ export const router = createBrowserRouter([
        element : <SignUp></SignUp>
     },
     {
-      path : '/category' ,
-     element : <Category></Category>
+      path : '/category/:id' ,
+      element : <Category></Category>,
+      loader : ({params}) => fetch(`http://localhost:5000/category/${params.id}`)
     },
   ]},
   {path : '/dashboard' , element : <PrivateRoute><DashboardLayout/></PrivateRoute>, errorElement : <ErrorPage/>, children : [

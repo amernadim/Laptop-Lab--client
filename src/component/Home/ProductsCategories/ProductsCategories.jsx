@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ProductCategory from './ProductCategory';
+import Spinner from '../../Shared/Spinner';
 
 const ProductsCategories = () => {
   const [categories,setCategories] = useState([]);
+  const [loading ,setLoading] = useState(true)
   useEffect(() => {
     axios.get('http://localhost:5000/categories')
     .then(res => {
         const datas = res?.data;
         setCategories(datas) 
+        setLoading(false)
         // console.log(datas);    
     })
     .catch(error => {
@@ -18,6 +21,10 @@ const ProductsCategories = () => {
   
     })
   },[])
+
+  if(loading) {
+    return <Spinner/>
+  }
  
   return (
     <div className='mt-5'>
