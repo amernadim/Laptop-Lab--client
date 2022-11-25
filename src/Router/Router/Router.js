@@ -13,6 +13,7 @@ import SignIn from "../../component/SignIn/SignIn";
 import SignUp from "../../component/SignIn/SignUp";
 import DashboardLayout from "../../layout/DashboardLayout";
 import Root from "../../layout/Root";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
   {path : '/' , element : <Root></Root> , errorElement: <ErrorPage/>, children : [
@@ -41,7 +42,7 @@ export const router = createBrowserRouter([
      element : <Category></Category>
     },
   ]},
-  {path : '/dashboard' , element : <DashboardLayout/>, errorElement : <ErrorPage/>, children : [
+  {path : '/dashboard' , element : <PrivateRoute><DashboardLayout/></PrivateRoute>, errorElement : <ErrorPage/>, children : [
     {
       path : '/dashboard/myOrders' , element : <MyOrders/>
     },

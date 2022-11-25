@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { XMarkIcon, Bars3Icon, PlayIcon } from "@heroicons/react/24/solid";
 import { AuthContext } from "../../context/AuthProvider";
+import toast from 'react-hot-toast';
 
 const Navbar = () => {
   const { user,logout } = useContext(AuthContext);
@@ -9,7 +10,9 @@ const Navbar = () => {
 
   const handleLogout = () => {
     logout()
-    .then(() => {})
+    .then(() => {
+      toast.success('LogOut success')
+    })
     .catch(error => console.log(error))
   }
 
