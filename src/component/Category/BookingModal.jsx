@@ -25,7 +25,6 @@ const BookingModal = ({ product }) => {
     _id,
   } = product;
 
-
   const handleBooking = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -59,7 +58,7 @@ const BookingModal = ({ product }) => {
         console.log(data);
         if (data.acknowledged) {
           form.reset();
-          toast.success("Booking confirmed");         
+          toast.success("This item is Booked");
         } else {
           toast.error(data.message);
         }
@@ -81,7 +80,7 @@ const BookingModal = ({ product }) => {
             onSubmit={handleBooking}
             className="grid grid-cols-1 gap-3 mt-10"
           >
-            <h3 className="text-lg font-bold">Model: {productName} </h3>
+            <h3 className="text-lg font-bold">{productName} </h3>
             <input
               name="name"
               type="text"

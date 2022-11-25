@@ -57,7 +57,7 @@ const saveUser = (email,name, role) =>{
  }
 
   return (
-    <div className="flex max-w-md p-2 rounded-md border-2 shadow-md mx-auto mb-3">
+    <div className="flex max-w-md p-4 rounded-md border-2 shadow-2xl mx-auto mb-5">
     <form onSubmit={handleSubmit}  className="space-y-2 mx-auto" >
       <h1 className="my-1 text-center text-3xl font-bold">Sign Up</h1>
       <div className="space-y-4">

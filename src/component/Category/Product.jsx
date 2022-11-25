@@ -22,7 +22,8 @@ const Product = ({ product }) => {
     sellerEmail,
     sellerName,
     yearOfUsed,
-    _id,
+    sellerVerified,
+    _id
   } = product;
   return (
     <div className="max-w-lg p-4 shadow-md">
@@ -48,11 +49,13 @@ const Product = ({ product }) => {
             <p  className="font-semibold">Year of use : {yearOfUsed}.</p>
             {/* <p>Publish Date : {}</p> */}
           </div>
-          <div className="flex gap-2  items-center mt-4">
-            <p  className="font-semibold">Seller Name : {sellerName}</p>
-            <span>
+          <div className="flex gap-2 items-center mt-4">
+            <p  className="font-semibold">Seller : {sellerName}</p>
+            { sellerVerified === "true" &&
+              <span>
               <CheckBadgeIcon className="w-6 h-4 text-blue-600" />
-            </span>
+              </span>
+            }
           </div>
           <button className="text-red-600 hover:underline">
             Report to Admin
