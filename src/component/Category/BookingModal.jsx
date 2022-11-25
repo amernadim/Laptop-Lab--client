@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../context/AuthProvider";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+
 
 const BookingModal = ({ product }) => {
   const { user } = useContext(AuthContext);
@@ -42,6 +42,7 @@ const BookingModal = ({ product }) => {
       receiveLocation,
       productId: _id,
       productName,
+      productImg
     };
 
     // console.log(booking);

@@ -1,33 +1,77 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../context/AuthProvider';
+import toast from "react-hot-toast";
+import { useNavigate } from 'react-router-dom';
 
 const AddProduct = () => {
+  const {user} = useContext(AuthContext);
+  const navigate = useNavigate();
+  const handleAddProduct = event => {
+    event.preventDefault();
+    const form = event.target;
+    const categoryId = form.categoryId.value;
+    const productName = form.productName.value;
+    const productImg = form.productImg.value;
+    const productCondition = form.productCondition.value;
+    const resalePrice = form.resalePrice.value;
+    const originalPrice = form.originalPrice.value;
+    const mobileNumber = form.mobileNumber.value;
+    const location = form.mobileNumber.value;
+    const yearOfUsed = form.yearOfUsed.value;
+    const publishDate = form.publishDate.value;
+
+    const product = {
+      categoryId,
+      productName,
+      productImg,
+      productCondition,
+      resalePrice,
+      originalPrice,
+      mobileNumber,
+      location,
+      yearOfUsed,
+      publishDate,
+      sellerName : user?.displayName,
+      sellerEmail : user?.email,
+      sellerVerified : "false",
+      available : "true",
+      advertise : "false"
+
+    }
+
+    fetch('http://localhost:5000/product' , {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(product),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.acknowledged) {
+          form.reset();
+          toast.success("Product added");
+          navigate('/dashboard/myProducts')
+        } else {
+          toast.error(data.message);
+        }
+      });
+  
+
+    // console.log(product);
+  }
+
+
+
+
   return (
     <div className='w-11/12 mx-auto mb-4'>
      <div><h2 className="text-xl font-semibold text-center">Add A Products</h2></div>
-     <form
+     <form onSubmit={handleAddProduct}
         className="container flex flex-col mx-auto space-y-12"
       >
         <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
-
-          <div className="col-span-full sm:col-span-3">
-            <label className="text-md">Seller Name</label>
-            <input
-              type="text"
-              name="sellerName"
-              className="w-full rounded-md py-1 px-2"
-              required
-            />
-          </div>
-
-          <div className="col-span-full sm:col-span-3">
-            <label className="text-md">Seller Email</label>
-            <input
-              type="email"
-              name="sellerEmail"
-              className="w-full rounded-md py-1 px-2"
-              required
-            />
-          </div>
 
           <div className="col-span-full sm:col-span-3">
             <label className="text-md">Product Name</label>
@@ -53,7 +97,7 @@ const AddProduct = () => {
             <label className="text-md">Orginal Price</label>
             <input
               type="number"
-              name="orginalPrice"
+              name="originalPrice"
               className="w-full rounded-md py-1 px-2 "
               required
             />
@@ -73,7 +117,17 @@ const AddProduct = () => {
             <label className="text-md">Condition Type</label>
             <input
               type="text"
-              name="conditionType"
+              name="productCondition"
+              className="w-full rounded-md py-1 px-2"
+              required
+            />
+          </div>
+
+          <div className="col-span-full sm:col-span-3">
+            <label className="text-md">Publish time</label>
+            <input
+              type="text"
+              name="publishDate"
               className="w-full rounded-md py-1 px-2"
               required
             />
@@ -110,11 +164,11 @@ const AddProduct = () => {
           </div>
 
           <div className="col-span-full sm:col-span-2">
-            <label className="text-md">Category</label>
-            <select name="category" className="select select-sm select-bordered  w-full px-3 rounded-md bg-white" >
-              <option>Dell</option>
-              <option>HP</option>
-              <option>Lenovo</option>
+            <label className="text-md">Category Id</label>
+            <select name="categoryId" className="select select-sm select-bordered  w-full px-3 rounded-md bg-white" >
+              <option>001</option>
+              <option>002</option>
+              <option>003</option>
             </select>
           </div>
 
@@ -122,7 +176,7 @@ const AddProduct = () => {
             <label className="text-md">Year Of Purchase</label>
             <input
               type="number"
-              name="yearOfuse"
+              name="yearOfUsed"
               className="w-full rounded-md py-1 px-2"
               required
             />
