@@ -1,10 +1,15 @@
-import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useLoaderData, useNavigation } from 'react-router-dom';
+import Spinner from '../Shared/Spinner';
 import Product from './Product';
 
 
 const Category = () => {
   const data = useLoaderData();
+  const navigation = useNavigation()
+  if(navigation.state === "loading") {
+    return <Spinner/>
+  }
   // console.log(data);
   return (
     <div className='w-11/12 mx-auto my-5'>

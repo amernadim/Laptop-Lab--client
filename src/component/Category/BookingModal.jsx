@@ -1,6 +1,71 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../context/AuthProvider";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
-const BookingModal = () => {
+const BookingModal = ({ product }) => {
+  const { user } = useContext(AuthContext);
+
+  const {
+    categoryName,
+    advertise,
+    available,
+    categoryId,
+    location,
+    mobileNumber,
+    originalPrice,
+    productCondition,
+    productImg,
+    productName,
+    publishDate,
+    resalePrice,
+    sellerEmail,
+    sellerName,
+    yearOfUsed,
+    _id,
+  } = product;
+
+
+  const handleBooking = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const price = form.price.value;
+    const mobileNumber = form.phone.value;
+    const receiveLocation = form.location.value;
+
+    const booking = {
+      buyerName: name,
+      buyerEmail: email,
+      productPrice: price,
+      buyerNumber: mobileNumber,
+      receiveLocation,
+      productId: _id,
+      productName,
+    };
+
+    // console.log(booking);
+
+    fetch("http://localhost:5000/booking", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(booking),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.acknowledged) {
+          form.reset();
+          toast.success("Booking confirmed");         
+        } else {
+          toast.error(data.message);
+        }
+      });
+  };
+
   return (
     <>
       <input type="checkbox" id="bookingModal" className="modal-toggle" />
@@ -12,13 +77,17 @@ const BookingModal = () => {
           >
             ✕
           </label>
-          <h3 className="text-lg font-bold">Model Name</h3>
-          <form className="grid grid-cols-1 gap-3 mt-10">
+          <form
+            onSubmit={handleBooking}
+            className="grid grid-cols-1 gap-3 mt-10"
+          >
+            <h3 className="text-lg font-bold">Model: {productName} </h3>
             <input
               name="name"
               type="text"
               placeholder="Your Name"
               className="input w-full input-bordered"
+              defaultValue={user?.displayName}
               disabled
             />
 
@@ -27,6 +96,7 @@ const BookingModal = () => {
               type="email"
               placeholder="Email Address"
               className="input w-full input-bordered"
+              defaultValue={user?.email}
               disabled
             />
 
@@ -35,14 +105,16 @@ const BookingModal = () => {
               type="text"
               placeholder="Price"
               className="input w-full input-bordered "
+              defaultValue={`${resalePrice} Tk`}
               disabled
             />
 
             <input
               name="phone"
-              type="text"
+              type="number"
               placeholder="Phone Number"
               className="input w-full input-bordered"
+              required
             />
 
             <input
@@ -50,12 +122,13 @@ const BookingModal = () => {
               name="location"
               className="input w-full input-bordered "
               placeholder="Product Receive Location"
+              required
             />
             <br />
             <input
               className="btn btn-accent w-full"
               type="submit"
-              value ="Submit"
+              value="Submit"
             />
           </form>
         </div>

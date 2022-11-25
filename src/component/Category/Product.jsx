@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 // import { Link } from 'react-router-dom';
 import { CheckBadgeIcon } from "@heroicons/react/24/solid";
 import BookingModal from "./BookingModal";
 
 const Product = ({ product }) => {
+  
   // console.log(product);
   const {
     categoryName,
@@ -61,7 +62,11 @@ const Product = ({ product }) => {
               Book Now
             </label>
           </div>
-          <BookingModal></BookingModal>
+        
+           <BookingModal
+           product={product}
+           ></BookingModal>
+        
         </div>
       </div>
     </div>
