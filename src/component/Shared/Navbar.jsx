@@ -31,7 +31,7 @@ const Navbar = () => {
           to="/"
           className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
         >
-          Blank 
+         About Us
         </Link>
       </li>
       <li>

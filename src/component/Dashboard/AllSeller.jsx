@@ -1,7 +1,18 @@
 import React from 'react';
 import {CheckBadgeIcon} from '@heroicons/react/24/solid';
+import { useQuery } from '@tanstack/react-query';
 
 const AllSeller = () => {
+  const {data:sellers = []} = useQuery({
+    queryKey : ["user"],
+    queryFn : async() => {
+      const res = await fetch('http://localhost:5000/user/Seller')
+      const data = await res.json();
+      return data
+    }
+
+  })
+     
   return (
     <div className='w-11/12 mx-auto mb-4  overflow-x-auto'>
      <div><h2 className="text-xl font-semibold text-center">All Sellers</h2></div>
@@ -18,26 +29,20 @@ const AllSeller = () => {
       </tr>
     </thead>
     <tbody>
-      {/* <!-- row 1 --> */}
-      <tr>
-        <th>1</th>
-        <td >
-         <div className='flex items-center gap-1'>
-         <h2>Cy ikaihd </h2><CheckBadgeIcon className='w-6 h-4 text-blue-600'/> 
-          </div>      
-        </td>
-        <td>Quality Control Specialist</td>
-        <td><button className='btn btn-sm bg-green-500 text-black border-none'>Verify</button></td>
-        <td><button className='btn btn-sm bg-error border-none'>Delete</button></td>
-      </tr>
-      {/* <!-- row 2 --> */}
-      <tr className="active">
-        <th>2</th>
-        <td>Hart Hagerty</td>
-        <td>Desktop Support Technician</td>
-        <td><button className='btn btn-sm bg-green-500 text-black border-none'>Verify</button></td>
-        <td><button className='btn btn-sm bg-error border-none'>Delete</button></td>
-      </tr>
+      {
+        sellers.map((seller,i) => <tr key={i}>
+          <th>{i + 1}</th>
+          <td >
+           <div className='flex items-center gap-1'>
+           <h2>{seller.name}</h2><CheckBadgeIcon className='w-6 h-4 text-blue-600'/> 
+            </div>      
+          </td>
+          <td>{seller.email}</td>
+          <td><button className='btn btn-sm bg-green-500 text-black border-none'>Verify</button></td>
+          <td><button className='btn btn-sm bg-error border-none'>Delete</button></td>
+        </tr>)
+      }
+      
     </tbody>
   </table>
 </div>

@@ -37,7 +37,7 @@ const AdvertisedItems = () => {
                   <img
                     src={product.productImg}
                     alt=""
-                    className="object-cover w-full mb-4 h-60 sm:h-96"
+                    className="object-cover rounded-md w-full mb-4 h-60 sm:h-96"
                   />
                   <div className="">
                     <h2 className="card-title">{product.productName}</h2>

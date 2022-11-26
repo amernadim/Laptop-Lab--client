@@ -37,7 +37,7 @@ const SignIn = () => {
         console.log(user);
         toast.success("Login Successfully");
         const role = "User";
-        saveUser(user?.email, user?.displayName, role);
+        saveUserToDb(user?.email, user?.displayName, role);
         navigate(from, { replace: true });
       })
       .catch((error) => {
@@ -46,7 +46,7 @@ const SignIn = () => {
       });
   };
 
-  const saveUser = (email, name, role) => {
+  const saveUserToDb = (email, name, role) => {
     const user = { email, name, role };
     fetch(`http://localhost:5000/user/${email}`, {
       method: "PUT",
