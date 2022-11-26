@@ -32,7 +32,7 @@ const MyProduct = () => {
     })
     .then(res => res.json())
     .then(data =>{
-      if(data.modifiedCount) {
+      if(data.modifiedCount > 0) {
         toast.success("Successfully Products Status changed")
         console.log(data);
         refetch()
@@ -56,7 +56,7 @@ const MyProduct = () => {
     })
     .then(res => res.json())
     .then(data =>{
-      if(data.modifiedCount) {
+      if(data.modifiedCount > 0) {
         toast.success("Successfully changed")
         console.log(data);
         refetch()

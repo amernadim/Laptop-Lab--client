@@ -1,8 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import Spinner from '../Shared/Spinner';
+import toast from 'react-hot-toast';
 
 const AllUser = () => {
-  const {data: users=[] } = useQuery({
+  const {data: users=[] , isLoading} = useQuery({
     queryKey : ["user"],
     queryFn : async () => {
       const res = await fetch('http://localhost:5000/user/User');
@@ -10,6 +12,11 @@ const AllUser = () => {
       return data;
     }
   })
+
+  if(isLoading) {
+    return <Spinner></Spinner>
+  }
+     
   return (
     <div className='w-11/12 mx-auto mb-4  overflow-x-auto'>
     <div><h2 className="text-xl font-semibold text-center">All Buyers</h2></div>
@@ -27,8 +34,8 @@ const AllUser = () => {
    <tbody>
      {users.map((user,i) =>  <tr key={i}>
        <th>{i + 1}</th>
-       <td>{user.name}</td>
-       <td>{user.email}</td>
+       <td>{user?.name}</td>
+       <td>{user?.email}</td>
        <td><button className='btn btn-sm bg-error border-none'>Delete</button></td>
      </tr>)}
     
