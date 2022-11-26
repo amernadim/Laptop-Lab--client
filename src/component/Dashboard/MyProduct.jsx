@@ -2,11 +2,12 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { AuthContext } from '../../context/AuthProvider';
 import Spinner from '../Shared/Spinner';
+import toast from 'react-hot-toast';
 
 const MyProduct = () => {
   const {user} = useContext(AuthContext);
 
-  const { data = [] ,isLoading } = useQuery({
+  const { data = [] ,isLoading ,refetch} = useQuery({
     queryKey: ["product"],
     queryFn: async () => {
       const res = await fetch(`http://localhost:5000/product/${user?.email}`);
@@ -15,7 +16,54 @@ const MyProduct = () => {
     },
   });
 
-  console.log(data);
+
+  // Available
+  const handleAvailable =(id,data) => {
+    const IsAvailable = {
+      available : data
+    }
+  //  console.log(IsAvailable);
+    fetch(`http://localhost:5000/product/${id}` , {
+      method: 'PUT',
+      headers: {
+          'content-type': 'application/json'
+      },
+      body: JSON.stringify(IsAvailable)
+    })
+    .then(res => res.json())
+    .then(data =>{
+      if(data.modifiedCount) {
+        toast.success("Successfully changed")
+        console.log(data);
+        refetch()
+      }
+  })
+
+  }
+
+  // Advertise
+  const handleAdvertise =(id,data) => {
+    const IsAdvertise = {
+      advertise : data
+    }
+   console.log(IsAdvertise);
+    fetch(`http://localhost:5000/product/${id}` , {
+      method: 'PUT',
+      headers: {
+          'content-type': 'application/json'
+      },
+      body: JSON.stringify(IsAdvertise)
+    })
+    .then(res => res.json())
+    .then(data =>{
+      if(data.modifiedCount) {
+        toast.success("Successfully changed")
+        console.log(data);
+        refetch()
+      }
+  })
+
+  }
 
   if(isLoading) {
     return <Spinner/>
@@ -29,6 +77,7 @@ const MyProduct = () => {
         <tr>
           <th>Product</th>
           <th>Price</th>
+          <th>Year Of Used</th>
           <th>Status</th>
           <th>Advertise</th>
         </tr>
@@ -51,15 +100,22 @@ const MyProduct = () => {
           <td>
             <p>{product?.resalePrice}</p>
           </td>
-          <td> {
-            product?.available === "true" ? 
-            <button className='btn btn-ghost'>Available</button>
-             :
-             <button className='btn btn-ghost ml-2'>Sold</button>            
+          <td>
+            <p>{product?.yearOfUsed}</p>
+          </td>
+          <td > 
+            {
+              product?.available === "false" ?          
+            <button onClick={() => handleAvailable(product?._id, "true")} className='btn btn-ghost'>Available</button>
+            :
+             <button onClick={() => handleAvailable(product?._id, "false")}
+             className='btn btn-ghost ml-2'>Sold</button>            
             }
           </td>
-          <th>
-            <button className="btn btn-sm">Advertise</button>
+          <th>{
+             product?.advertise === "false" && 
+            <button onClick={() => handleAdvertise(product?._id, "true")}  className="btn btn-sm">Advertise</button>
+            }
           </th>
         </tr>  )
 
