@@ -33,7 +33,7 @@ const MyProduct = () => {
     .then(res => res.json())
     .then(data =>{
       if(data.modifiedCount) {
-        toast.success("Successfully changed")
+        toast.success("Successfully Products Status changed")
         console.log(data);
         refetch()
       }
@@ -106,10 +106,10 @@ const MyProduct = () => {
           <td > 
             {
               product?.available === "false" ?          
-            <button onClick={() => handleAvailable(product?._id, "true")} className='btn btn-ghost'>Available</button>
+            <button onClick={() => handleAvailable(product?._id, "true")} className='btn btn-ghost'>Available ?</button>
             :
              <button onClick={() => handleAvailable(product?._id, "false")}
-             className='btn btn-ghost ml-2'>Sold</button>            
+             className='btn btn-ghost ml-2'>Sold ?</button>            
             }
           </td>
           <th>{
