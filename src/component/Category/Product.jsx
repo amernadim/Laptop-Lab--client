@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-// import { Link } from 'react-router-dom';
 import { CheckBadgeIcon } from "@heroicons/react/24/solid";
-import BookingModal from "./BookingModal";
 
-const Product = ({ product }) => {
+const Product = ({ product:data, setProduct }) => {
   
   // console.log(product);
   const {
@@ -24,7 +22,8 @@ const Product = ({ product }) => {
     yearOfUsed,
     sellerVerified,
     _id
-  } = product;
+  } = data;
+  // const [open,setOpen] = useState(product)
   return (
     <div className="max-w-lg p-4 shadow-md">
       <div className="space-y-4">
@@ -61,15 +60,11 @@ const Product = ({ product }) => {
             Report to Admin
           </button>
           <div className="mt-3 text-center">
-            <label htmlFor="bookingModal" className="btn btn-sm">
+            <label  onClick={() => setProduct(data)}
+             htmlFor="bookingModal" className="btn btn-sm">
               Book Now
             </label>
           </div>
-        
-           <BookingModal
-           product={product}
-           ></BookingModal>
-        
         </div>
       </div>
     </div>
