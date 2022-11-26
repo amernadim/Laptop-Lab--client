@@ -2,10 +2,14 @@ import React from "react";
 import { CheckBadgeIcon } from "@heroicons/react/24/solid";
 import { useQuery } from "@tanstack/react-query";
 import Spinner from "../Shared/Spinner";
-import toast from 'react-hot-toast';
+import toast from "react-hot-toast";
 
 const AllSeller = () => {
-  const { data: sellers = [], isLoading,refetch } = useQuery({
+  const {
+    data: sellers = [],
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["user"],
     queryFn: async () => {
       const res = await fetch("http://localhost:5000/user/Seller");
@@ -15,24 +19,37 @@ const AllSeller = () => {
   });
 
   const handleVerify = (email) => {
-     const data = {
-      status : "verified" 
-     }
+    const data = {
+      status: "verified",
+    };
 
-     fetch( `http://localhost:5000/user/seller/${email}`,{
-      method : "PUT",
-      headers : {
-        'content-type' : 'application/json'
+    fetch(`http://localhost:5000/user/seller/${email}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
       },
-      body:JSON.stringify(data)
-     })
-     .then(res => res.json())
-     .then(data => {
-      if(data.modifiedCount > 0){
-        refetch()
-        toast.success("seller verified")
-      }
-     })
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          refetch();
+          toast.success("seller verified");
+        }
+      });
+  };
+
+  const handleDelete = (email) => {
+    fetch(`http://localhost:5000/user/${email}`, {
+      method : "DELETE"
+    })
+    .then(res => res.json())
+    .then(data => {
+        if(data.deletedCount > 0){
+            refetch();
+            toast.success("Seller deleted successfully")
+        }
+    })
   };
 
   if (isLoading) {
@@ -63,24 +80,27 @@ const AllSeller = () => {
                 <td>
                   <div className="flex items-center gap-1">
                     <h2>{seller?.name}</h2>
-                    {  seller.status === "verified" &&
+                    {seller.status === "verified" && (
                       <CheckBadgeIcon className="w-6 h-4 text-blue-600" />
-                    }                  
+                    )}
                   </div>
                 </td>
                 <td>{seller?.email}</td>
                 <td>
-                 { !seller.status &&
-                   <button
-                   onClick={() => handleVerify(seller?.email)}
-                   className="btn btn-sm bg-green-500 text-black border-none"
-                 >
-                   Verify
-                 </button>
-                 }
+                  {!seller.status && (
+                    <button
+                      onClick={() => handleVerify(seller?.email)}
+                      className="btn btn-sm bg-gradient-to-br from-lime-500 via-lime-600 to-green-700 text-white border-none"
+                    >
+                      Verify
+                    </button>
+                  )}
                 </td>
                 <td>
-                  <button className="btn btn-sm bg-error border-none">
+                  <button
+                    onClick={() => handleDelete(seller?.email)}
+                    className="btn btn-sm bg-gradient-to-br from-red-600 via-red-500 to-orange-500 text-white border-none"
+                  >
                     Delete
                   </button>
                 </td>

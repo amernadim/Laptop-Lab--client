@@ -61,7 +61,7 @@ const Product = ({ product:data, setProduct }) => {
           </button>
           <div className="mt-3 text-center">
             <label  onClick={() => setProduct(data)}
-             htmlFor="bookingModal" className="btn btn-sm">
+             htmlFor="bookingModal" className="btn btn-sm bg-gradient-to-br from-lime-500 via-lime-600 to-green-700 text-white">
               Book Now
             </label>
           </div>

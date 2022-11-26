@@ -127,7 +127,7 @@ const BookingModal = ({ product,setProduct }) => {
             />
             <br />
             <input
-              className="btn btn-accent w-full"
+              className="btn bg-gradient-to-br from-lime-500 via-lime-600 to-green-700 text-white w-full"
               type="submit"
               value="Submit"
             />

@@ -57,7 +57,7 @@ const Navbar = () => {
     <>
       {user?.email ? (
         <li>
-          <button onClick={handleLogout} className="btn btn-sm">
+          <button onClick={handleLogout} className="btn btn-sm bg-gradient-to-br from-red-600 via-red-500 to-orange-500 text-white">
             LogOut
           </button>
         </li>

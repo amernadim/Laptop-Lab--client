@@ -4,7 +4,7 @@ import Spinner from '../Shared/Spinner';
 import toast from 'react-hot-toast';
 
 const AllUser = () => {
-  const {data: users=[] , isLoading} = useQuery({
+  const {data: users=[] ,refetch, isLoading} = useQuery({
     queryKey : ["user"],
     queryFn : async () => {
       const res = await fetch('http://localhost:5000/user/User');
@@ -12,6 +12,18 @@ const AllUser = () => {
       return data;
     }
   })
+  const handleDelete = (email) => {
+    fetch(`http://localhost:5000/user/${email}`, {
+      method : "DELETE"
+    })
+    .then(res => res.json())
+    .then(data => {
+        if(data.deletedCount > 0){
+            refetch();
+            toast.success("Buyer deleted successfully")
+        }
+    })
+  };
 
   if(isLoading) {
     return <Spinner></Spinner>
@@ -36,7 +48,7 @@ const AllUser = () => {
        <th>{i + 1}</th>
        <td>{user?.name}</td>
        <td>{user?.email}</td>
-       <td><button className='btn btn-sm bg-error border-none'>Delete</button></td>
+       <td><button onClick={() => handleDelete(user?.email)} className='btn btn-sm bg-gradient-to-br from-red-600 via-red-500 to-orange-500 text-white border-none'>Delete</button></td>
      </tr>)}
     
    </tbody>

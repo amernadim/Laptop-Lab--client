@@ -185,7 +185,7 @@ const AddProduct = () => {
           <div className="col-span-full sm:col-span-2">
             <label className="text-md text-base-100">.</label>
             <button
-              className="btn btn-sm w-full rounded-md py-1 px-2"
+              className="btn btn-sm w-full bg-gradient-to-br from-lime-500 via-lime-600 to-green-700 text-white py-1 px-2"
               type="submit"
             >
               Add Product

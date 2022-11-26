@@ -106,15 +106,15 @@ const MyProduct = () => {
           <td > 
             {
               product?.available === "false" ?          
-            <button onClick={() => handleAvailable(product?._id, "true")} className='btn btn-ghost'>Available ?</button>
+            <button onClick={() => handleAvailable(product?._id, "true")} className='btn btn-sm'>Available ?</button>
             :
              <button onClick={() => handleAvailable(product?._id, "false")}
-             className='btn btn-ghost ml-2'>Sold ?</button>            
+             className='btn btn-sm ml-2'>Sold ?</button>            
             }
           </td>
           <th>{
              product?.advertise === "false" && 
-            <button onClick={() => handleAdvertise(product?._id, "true")}  className="btn btn-sm">Advertise</button>
+            <button onClick={() => handleAdvertise(product?._id, "true")}  className="btn btn-sm bg-gradient-to-br from-lime-500 via-lime-600 to-green-700 text-white">Advertise</button>
             }
           </th>
         </tr>  )

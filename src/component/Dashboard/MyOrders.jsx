@@ -59,7 +59,7 @@ const MyOrders = () => {
               <p>{book.productPrice}</p>
             </td>
             <th>
-              <button className="btn btn-sm">Pay</button>
+              <button className="btn btn-sm bg-gradient-to-br from-lime-500 via-lime-600 to-green-700 text-white">Pay</button>
             </th>
           </tr>) 
           }

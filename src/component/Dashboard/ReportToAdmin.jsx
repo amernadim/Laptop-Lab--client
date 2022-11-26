@@ -21,14 +21,14 @@ const ReportToAdmin = () => {
        <th>1</th>
        <td>Cy ikaihd</td>
        <td>Quality Control Specialist</td>
-       <td><button className='btn btn-sm bg-error border-none'>Delete</button></td>
+       <td><button className='btn btn-sm bg-gradient-to-br from-red-600 via-red-500 to-orange-500 text-white border-none'>Delete</button></td>
      </tr>
      {/* <!-- row 2 --> */}
      <tr className="active">
        <th>2</th>
        <td>Hart Hagerty</td>
        <td>Desktop Support Technician</td>
-       <td><button className='btn btn-sm bg-error border-none'>Delete</button></td>
+       <td><button className='btn btn-sm bg-gradient-to-br from-red-600 via-red-500 to-orange-500 text-white border-none'>Delete</button></td>
      </tr>
    </tbody>
  </table>
