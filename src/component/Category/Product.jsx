@@ -40,8 +40,7 @@ const Product = ({ product: data, setProduct }) => {
         if (data.modifiedCount > 0) {
           toast.success("Report Successful");
         }
-      });
-    
+      });    
   };
 
   return (
