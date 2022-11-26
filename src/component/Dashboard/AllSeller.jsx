@@ -47,7 +47,7 @@ const AllSeller = () => {
     .then(data => {
         if(data.deletedCount > 0){
             refetch();
-            toast.success("Seller deleted successfully")
+            toast.success(`Seller deleted successfully`)
         }
     })
   };
