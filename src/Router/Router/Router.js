@@ -40,10 +40,14 @@ export const router = createBrowserRouter([
     {
       path : '/category/:id' ,
       element : <PrivateRoute><Category/></PrivateRoute>,
-      loader : ({params}) => fetch(`http://localhost:5000/category/${params.id}`)
+      loader : ({params}) => fetch(`http://localhost:5000/category/${params.id}`, {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("token")}`
+      }
+      })
     },
   ]},
-  {path : '/dashboard' , element : <PrivateRoute><DashboardLayout/></PrivateRoute>, errorElement : <ErrorPage/>, children : [
+  {path : '/dashboard' , element : <PrivateRoute><DashboardLayout/></ PrivateRoute>, errorElement : <ErrorPage/>, children : [
     {
       path : '/dashboard/myOrders' , element : <MyOrders/>
     },
@@ -61,6 +65,6 @@ export const router = createBrowserRouter([
     },
     {
       path : '/dashboard/reportToAdmin' , element : <ReportToAdmin/>
-    },
+    }
   ]}
 ])

@@ -23,7 +23,7 @@ const AllSeller = () => {
       status: "verified",
     };
 
-    fetch(`http://localhost:5000/user/seller/${email}`, {
+    fetch(`http://localhost:5000/user/${email}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -41,7 +41,10 @@ const AllSeller = () => {
 
   const handleDelete = (email) => {
     fetch(`http://localhost:5000/user/${email}`, {
-      method : "DELETE"
+      method : "DELETE",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("token")}`
+    }
     })
     .then(res => res.json())
     .then(data => {

@@ -11,7 +11,12 @@ const ReportToAdmin = () => {
   } = useQuery({
     queryKey: ["reported"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/products/reported");
+      const res = await fetch("http://localhost:5000/products/reported" , {
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("token")}`
+        },
+      });
       const data = await res.json();
       return data;
     },
@@ -19,7 +24,10 @@ const ReportToAdmin = () => {
 
   const handleDelete = id => {
     fetch(`http://localhost:5000/product/${id}` ,{
-      method : "DELETE"
+      method : "DELETE",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("token")}`
+      },
     })
     .then(res => res.json())
     .then(data => {

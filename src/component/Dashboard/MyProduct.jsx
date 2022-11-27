@@ -10,7 +10,11 @@ const MyProduct = () => {
   const { data = [] ,isLoading ,refetch} = useQuery({
     queryKey: ["product"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/product/${user?.email}`);
+      const res = await fetch(`http://localhost:5000/product/${user?.email}`, {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("token")}`
+      }
+      });
       const data = await res.json();
       return data;
     },
@@ -26,7 +30,8 @@ const MyProduct = () => {
     fetch(`http://localhost:5000/product/${id}` , {
       method: 'PUT',
       headers: {
-          'content-type': 'application/json'
+          'content-type': 'application/json',
+          authorization: `Bearer ${localStorage.getItem("token")}`
       },
       body: JSON.stringify(IsAvailable)
     })
@@ -50,7 +55,8 @@ const MyProduct = () => {
     fetch(`http://localhost:5000/product/${id}` , {
       method: 'PUT',
       headers: {
-          'content-type': 'application/json'
+          'content-type': 'application/json',
+          authorization: `Bearer ${localStorage.getItem("token")}`
       },
       body: JSON.stringify(IsAdvertise)
     })

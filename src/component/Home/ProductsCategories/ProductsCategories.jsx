@@ -7,7 +7,11 @@ const ProductsCategories = () => {
   const [categories,setCategories] = useState([]);
   const [loading ,setLoading] = useState(true)
   useEffect(() => {
-    axios.get('http://localhost:5000/categories')
+    axios.get('http://localhost:5000/categories',{
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("token")}`
+    }
+    })
     .then(res => {
         const datas = res?.data;
         setCategories(datas) 

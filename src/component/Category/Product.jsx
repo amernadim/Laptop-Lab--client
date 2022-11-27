@@ -32,6 +32,7 @@ const Product = ({ product: data, setProduct }) => {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("token")}`
       },
       body: JSON.stringify(data),
     })

@@ -6,7 +6,12 @@ const AdvertisedItems = () => {
   const [loading,setLoading] = useState(true)
 
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("http://localhost:5000/products" ,{
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("token")}`
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);

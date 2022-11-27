@@ -28,7 +28,7 @@ const SignUp = () => {
         console.log(user);
         toast.success('SignUp Success')
         form.reset()
-        saveUserTodb(email,name,role)
+        saveUserToDB(email,name,role)
       })
       .catch(error => {
         toast.error(error.message)
@@ -46,7 +46,7 @@ const SignUp = () => {
   } 
 
 
-const saveUserTodb = (email,name, role) =>{
+const saveUserToDB = (email,name, role) =>{
   const user ={email,name, role};
   fetch(`http://localhost:5000/user/${email}`, {
       method: 'PUT',

@@ -43,7 +43,8 @@ const SignIn = () => {
         console.log(user);
         toast.success("Login Successfully");
         const role = "User";
-        saveUserToDb(user?.email, user?.displayName, role);
+        saveUserToDB(user?.email, user?.displayName, role);
+        // access token
         setUserEmail(user?.email)
         // navigate(from, { replace: true });
       })
@@ -53,7 +54,7 @@ const SignIn = () => {
       });
   };
 
-  const saveUserToDb = (email, name, role) => {
+  const saveUserToDB = (email, name, role) => {
     const user = { email, name, role };
     fetch(`http://localhost:5000/user/${email}`, {
       method: "PUT",
