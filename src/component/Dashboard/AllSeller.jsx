@@ -27,6 +27,7 @@ const AllSeller = () => {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("token")}`
       },
       body: JSON.stringify(data),
     })
@@ -34,7 +35,7 @@ const AllSeller = () => {
       .then((data) => {
         if (data.modifiedCount > 0) {
           refetch();
-          toast.success("seller verified");
+          toast.success("Seller verified");
         }
       });
   };

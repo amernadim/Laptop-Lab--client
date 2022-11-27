@@ -51,7 +51,8 @@ const saveUserToDB = (email,name, role) =>{
   fetch(`http://localhost:5000/user/${email}`, {
       method: 'PUT',
       headers: {
-          'content-type': 'application/json'
+        "content-type": "application/json",
+       authorization: `Bearer ${localStorage.getItem("token")}`
       },
       body: JSON.stringify(user)
   })
