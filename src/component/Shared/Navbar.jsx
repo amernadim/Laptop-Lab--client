@@ -2,19 +2,19 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { XMarkIcon, Bars3Icon, PlayIcon } from "@heroicons/react/24/solid";
 import { AuthContext } from "../../context/AuthProvider";
-import toast from 'react-hot-toast';
+import toast from "react-hot-toast";
 
 const Navbar = () => {
-  const { user,logout } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleLogout = () => {
     logout()
-    .then(() => {
-      toast.success('LogOut success')
-    })
-    .catch(error => console.log(error))
-  }
+      .then(() => {
+        toast.success("LogOut success");
+      })
+      .catch((error) => console.log(error));
+  };
 
   const menuItem = (
     <>
@@ -31,7 +31,7 @@ const Navbar = () => {
           to="/"
           className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
         >
-         About Us
+          About Us
         </Link>
       </li>
       <li>
@@ -42,14 +42,16 @@ const Navbar = () => {
           Blog
         </Link>
       </li>
-      <li>
-        <Link
-          to="/dashboard"
-          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-        >
-          Dashboard
-        </Link>
-      </li>
+      {user?.uid && (
+        <li>
+          <Link
+            to="/dashboard"
+            className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+          >
+            Dashboard
+          </Link>
+        </li>
+      )}
     </>
   );
 
@@ -57,7 +59,10 @@ const Navbar = () => {
     <>
       {user?.email ? (
         <li>
-          <button onClick={handleLogout} className="btn btn-sm bg-gradient-to-br from-red-600 via-red-500 to-orange-500 text-white">
+          <button
+            onClick={handleLogout}
+            className="btn btn-sm bg-gradient-to-br from-red-600 via-red-500 to-orange-500 text-white"
+          >
             LogOut
           </button>
         </li>

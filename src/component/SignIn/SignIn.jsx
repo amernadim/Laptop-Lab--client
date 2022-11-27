@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import googlePng from "../../assets/image/google.png";
 import { AuthContext } from "../../context/AuthProvider";
@@ -69,9 +69,15 @@ const SignIn = () => {
       });
   };
 
-  if(token) {
-    navigate(from, {replace: true});
-  }
+  // if(token) {
+  //   navigate(from, {replace: true});
+  // }
+
+  useEffect(() => {
+    if(token) {
+      navigate(from, {replace: true});
+    }
+},[token, navigate])
 
   return (
     <div className="flex max-w-md p-4 rounded-md border-2 mx-auto mb-5 shadow-2xl ">

@@ -12,7 +12,7 @@ const Category = () => {
   if (navigation.state === "loading") {
     return <Spinner />;
   }
-  // console.log(data);
+
   return (
     <div className="w-11/12 mx-auto my-5">
       <div>

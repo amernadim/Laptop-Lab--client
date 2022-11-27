@@ -72,7 +72,7 @@ const AllSeller = () => {
             <tr>
               <th></th>
               <th>Seller's Name</th>
-              <th>Email</th>
+              <th>Seller's Email</th>
               <th>Verify</th>
               <th>Action</th>
             </tr>

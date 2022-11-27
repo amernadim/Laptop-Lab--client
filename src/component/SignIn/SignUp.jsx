@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import toast from 'react-hot-toast';
@@ -41,9 +41,15 @@ const SignUp = () => {
 
   }
 
-  if(token){
-    navigate('/');
-  } 
+  // if(token){
+  //   navigate('/');
+  // } 
+
+  useEffect(() => {
+    if(token) {
+       navigate('/');
+    }
+},[token, navigate])
 
 
 const saveUserToDB = (email,name, role) =>{
