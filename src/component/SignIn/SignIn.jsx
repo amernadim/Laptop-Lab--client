@@ -56,7 +56,7 @@ const SignIn = () => {
 
   const saveUserToDB = (email, name, role) => {
     const user = { email, name, role };
-    fetch(`http://localhost:5000/user/${email}`, {
+    fetch(`https://laptop-lab-server.vercel.app/user/${email}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

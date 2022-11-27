@@ -14,11 +14,14 @@ const MyProduct = () => {
   } = useQuery({
     queryKey: ["product"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/product/${user?.email}`, {
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      const res = await fetch(
+        `https://laptop-lab-server.vercel.app/product/${user?.email}`,
+        {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
       const data = await res.json();
       return data;
     },
@@ -30,7 +33,7 @@ const MyProduct = () => {
       available: data,
     };
     //  console.log(IsAvailable);
-    fetch(`http://localhost:5000/product/${id}`, {
+    fetch(`https://laptop-lab-server.vercel.app/product/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -54,7 +57,7 @@ const MyProduct = () => {
       advertise: data,
     };
     console.log(IsAdvertise);
-    fetch(`http://localhost:5000/product/${id}`, {
+    fetch(`https://laptop-lab-server.vercel.app/product/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

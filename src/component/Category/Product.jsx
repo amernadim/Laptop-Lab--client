@@ -26,13 +26,13 @@ const Product = ({ product: data, setProduct }) => {
 
   const handleReport = (id) => {
     const data = {
-      reportStatus : "reported"
-    }
-    fetch(`http://localhost:5000/product/${id}`, {
+      reportStatus: "reported",
+    };
+    fetch(`https://laptop-lab-server.vercel.app/product/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("token")}`
+        authorization: `Bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify(data),
     })
@@ -41,7 +41,7 @@ const Product = ({ product: data, setProduct }) => {
         if (data.modifiedCount > 0) {
           toast.success("Report Successful");
         }
-      });    
+      });
   };
 
   return (
@@ -78,7 +78,10 @@ const Product = ({ product: data, setProduct }) => {
               </span>
             )}
           </div>
-          <button onClick={()=> handleReport(_id)} className="text-red-600 hover:underline">
+          <button
+            onClick={() => handleReport(_id)}
+            className="text-red-600 hover:underline"
+          >
             Report to Admin
           </button>
           <div className="mt-3 text-center">

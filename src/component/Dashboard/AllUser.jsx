@@ -11,13 +11,13 @@ const AllUser = () => {
   } = useQuery({
     queryKey: ["user"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/user/User");
+      const res = await fetch("https://laptop-lab-server.vercel.app/user/User");
       const data = await res.json();
       return data;
     },
   });
   const handleDelete = (email) => {
-    fetch(`http://localhost:5000/user/${email}`, {
+    fetch(`https://laptop-lab-server.vercel.app/user/${email}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${localStorage.getItem("token")}`,

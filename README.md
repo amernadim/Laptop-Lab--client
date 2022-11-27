@@ -1,5 +1,5 @@
 # Laptop Lab
-## live link : 
+## live link : https://laptop-lab.web.app
 
 Feature:
 - Develop UI using React.js and TailwindCss and implement responsiveness.

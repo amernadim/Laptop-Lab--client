@@ -11,19 +11,22 @@ const ReportToAdmin = () => {
   } = useQuery({
     queryKey: ["reported"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/products/reported", {
-        headers: {
-          "content-type": "application/json",
-          authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      const res = await fetch(
+        "https://laptop-lab-server.vercel.app/products/reported",
+        {
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
       const data = await res.json();
       return data;
     },
   });
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/product/${id}`, {
+    fetch(`https://laptop-lab-server.vercel.app/product/${id}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${localStorage.getItem("token")}`,

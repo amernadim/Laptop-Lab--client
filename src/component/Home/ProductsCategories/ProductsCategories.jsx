@@ -8,7 +8,7 @@ const ProductsCategories = () => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/categories")
+      .get("https://laptop-lab-server.vercel.app/categories")
       .then((res) => {
         const datas = res?.data;
         setCategories(datas);
