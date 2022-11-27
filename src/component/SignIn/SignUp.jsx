@@ -52,7 +52,6 @@ const saveUserToDB = (email,name, role) =>{
       method: 'PUT',
       headers: {
         "content-type": "application/json",
-       authorization: `Bearer ${localStorage.getItem("token")}`
       },
       body: JSON.stringify(user)
   })

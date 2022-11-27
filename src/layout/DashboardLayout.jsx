@@ -4,11 +4,13 @@ import Navbar from "../component/Shared/Navbar";
 import { AuthContext } from "../context/AuthProvider";
 import useAdmin from "../hooks/useAdmin";
 import useSeller from "../hooks/useSeller";
+import useUser from "../hooks/useUser";
 
 const DashboardLayout = () => {
   const { user } = useContext(AuthContext);
   const [isAdmin] = useAdmin(user?.email);
   const [isSeller] = useSeller(user?.email);
+  const [isUser] = useUser(user?.email);
   return (
     <div>
       <div>
@@ -30,11 +32,13 @@ const DashboardLayout = () => {
             <ul className="menu p-4 w-80 text-base-content">
               {/* <!-- Sidebar content here --> */}
 
-              <li className="btn btn-md mt-2">
+            {  isUser &&
+            <li className="btn btn-md mt-2">
                 <Link className="" to="/dashboard/myOrders">
                   My Order
                 </Link>
               </li>
+              }
 
             { isSeller &&
               <>
