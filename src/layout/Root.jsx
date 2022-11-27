@@ -7,7 +7,9 @@ const Root = () => {
   return (
     <div>
       <Navbar/>
+      <div className='mt-[72px]'>
       <Outlet/>
+      </div>
       <Footer/>
     </div>
   );

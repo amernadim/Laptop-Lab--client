@@ -22,20 +22,16 @@ const Category = () => {
       <div className="products grid grid-cols-1 md:grid-cols-2 gap-3 w-11/12 mx-auto">
         {data.map((product) => (
           <Product
-           key={product._id} 
-           product={product}
-           setProduct={setProduct}
-           ></Product>
+            key={product._id}
+            product={product}
+            setProduct={setProduct}
+          ></Product>
         ))}
       </div>
 
-     { product &&
-       <BookingModal 
-       product={product}
-       setProduct={setProduct}
-       ></BookingModal>
-     }
-
+      {product && (
+        <BookingModal product={product} setProduct={setProduct}></BookingModal>
+      )}
     </div>
   );
 };

@@ -11,10 +11,10 @@ const ReportToAdmin = () => {
   } = useQuery({
     queryKey: ["reported"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/products/reported" , {
+      const res = await fetch("http://localhost:5000/products/reported", {
         headers: {
           "content-type": "application/json",
-          authorization: `Bearer ${localStorage.getItem("token")}`
+          authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
       const data = await res.json();
@@ -22,22 +22,21 @@ const ReportToAdmin = () => {
     },
   });
 
-  const handleDelete = id => {
-    fetch(`http://localhost:5000/product/${id}` ,{
-      method : "DELETE",
+  const handleDelete = (id) => {
+    fetch(`http://localhost:5000/product/${id}`, {
+      method: "DELETE",
       headers: {
-        authorization: `Bearer ${localStorage.getItem("token")}`
+        authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     })
-    .then(res => res.json())
-    .then(data => {
-        if(data.deletedCount > 0){
-            refetch();
-            toast.success(`Product deleted successfully`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          refetch();
+          toast.success(`Product deleted successfully`);
         }
-    })
-   
-  }
+      });
+  };
 
   if (isLoading) {
     return <Spinner />;
@@ -66,7 +65,10 @@ const ReportToAdmin = () => {
                 <td>{report?.productName}</td>
                 <td>{report?.sellerName}</td>
                 <td>
-                  <button onClick={() => handleDelete(report?._id)} className="btn btn-sm bg-gradient-to-br from-red-600 via-red-500 to-orange-500 text-white border-none">
+                  <button
+                    onClick={() => handleDelete(report?._id)}
+                    className="btn btn-sm bg-gradient-to-br from-red-600 via-red-500 to-orange-500 text-white border-none"
+                  >
                     Delete
                   </button>
                 </td>

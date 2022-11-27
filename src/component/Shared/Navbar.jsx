@@ -21,15 +21,15 @@ const Navbar = () => {
       <li>
         <Link
           to="/home"
-          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-orange-500"
         >
           Home
         </Link>
       </li>
       <li>
         <Link
-          to="/"
-          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+          to="/about"
+          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-orange-500"
         >
           About Us
         </Link>
@@ -37,7 +37,7 @@ const Navbar = () => {
       <li>
         <Link
           to="/blog"
-          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-orange-500"
         >
           Blog
         </Link>
@@ -46,7 +46,7 @@ const Navbar = () => {
         <li>
           <Link
             to="/dashboard"
-            className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+            className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-orange-500"
           >
             Dashboard
           </Link>
@@ -69,7 +69,7 @@ const Navbar = () => {
       ) : (
         <>
           <li>
-            <Link to="/signIn" className="btn btn-sm">
+            <Link to="/signIn" className="btn btn-sm ">
               Sign In
             </Link>
           </li>
@@ -85,7 +85,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+    <div className="px-4 py-5 mx-auto fixed top-0 w-full lg:max-w-screen-xl md:px-24 lg:px-8 bg-base-200 z-40">
       <div className="relative flex items-center justify-between">
         <Link to="/" className="inline-flex items-center">
           <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">

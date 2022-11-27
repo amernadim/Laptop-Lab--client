@@ -7,8 +7,8 @@ import useAccessToken from "../../hooks/useAccessToken";
 
 const SignIn = () => {
   const { signIn, signInWithGoogle } = useContext(AuthContext);
-  
-  const [userEmail,setUserEmail] = useState('');
+
+  const [userEmail, setUserEmail] = useState("");
   const [token] = useAccessToken(userEmail);
 
   const navigate = useNavigate();
@@ -20,14 +20,14 @@ const SignIn = () => {
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-   
+
     signIn(email, password)
       .then((result) => {
         const user = result.user;
         toast.success("Login Successfully");
         form.reset();
         // navigate(from, { replace: true });
-        setUserEmail(email)
+        setUserEmail(email);
         console.log(user);
       })
       .catch((error) => {
@@ -45,7 +45,7 @@ const SignIn = () => {
         const role = "User";
         saveUserToDB(user?.email, user?.displayName, role);
         // access token
-        setUserEmail(user?.email)
+        setUserEmail(user?.email);
         // navigate(from, { replace: true });
       })
       .catch((error) => {
@@ -65,7 +65,7 @@ const SignIn = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);       
+        console.log(data);
       });
   };
 
@@ -74,10 +74,10 @@ const SignIn = () => {
   // }
 
   useEffect(() => {
-    if(token) {
-      navigate(from, {replace: true});
+    if (token) {
+      navigate(from, { replace: true });
     }
-},[token, navigate])
+  }, [token, navigate]);
 
   return (
     <div className="flex max-w-md p-4 rounded-md border-2 mx-auto mb-5 shadow-2xl ">
@@ -110,7 +110,6 @@ const SignIn = () => {
               required
             />
           </div>
-         
         </div>
         <div className="space-y-2">
           <div>

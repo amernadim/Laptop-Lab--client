@@ -1,12 +1,12 @@
-import React, { useContext } from 'react';
-import { AuthContext } from '../../context/AuthProvider';
+import React, { useContext } from "react";
+import { AuthContext } from "../../context/AuthProvider";
 import toast from "react-hot-toast";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const AddProduct = () => {
-  const {user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
-  const handleAddProduct = event => {
+  const handleAddProduct = (event) => {
     event.preventDefault();
     const form = event.target;
     const categoryId = form.categoryId.value;
@@ -31,20 +31,18 @@ const AddProduct = () => {
       location,
       yearOfUsed,
       publishDate,
-      sellerName : user?.displayName,
-      sellerEmail : user?.email,
-      sellerVerified : "false",
-      available : "true",
-      advertise : "false"
+      sellerName: user?.displayName,
+      sellerEmail: user?.email,
+      sellerVerified: "false",
+      available: "true",
+      advertise: "false",
+    };
 
-    }
-   
-
-    fetch('http://localhost:5000/product' , {
+    fetch("http://localhost:5000/product", {
       method: "POST",
       headers: {
         "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("token")}`
+        authorization: `Bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify(product),
     })
@@ -54,27 +52,25 @@ const AddProduct = () => {
         if (data.acknowledged) {
           form.reset();
           toast.success("Product added");
-          navigate('/dashboard/myProducts')
+          navigate("/dashboard/myProducts");
         } else {
           toast.error(data.message);
         }
       });
-  
 
     // console.log(product);
-  }
-
-
-
+  };
 
   return (
-    <div className='w-11/12 mx-auto mb-4'>
-     <div><h2 className="text-xl font-semibold text-center">Add A Products</h2></div>
-     <form onSubmit={handleAddProduct}
+    <div className="w-11/12 mx-auto mb-4">
+      <div>
+        <h2 className="text-xl font-semibold text-center">Add A Products</h2>
+      </div>
+      <form
+        onSubmit={handleAddProduct}
         className="container flex flex-col mx-auto space-y-12"
       >
         <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
-
           <div className="col-span-full sm:col-span-3">
             <label className="text-md">Product Name</label>
             <input
@@ -167,7 +163,10 @@ const AddProduct = () => {
 
           <div className="col-span-full sm:col-span-2">
             <label className="text-md">Category Id</label>
-            <select name="categoryId" className="select select-sm select-bordered  w-full px-3 rounded-md bg-white" >
+            <select
+              name="categoryId"
+              className="select select-sm select-bordered  w-full px-3 rounded-md bg-white"
+            >
               <option>001</option>
               <option>002</option>
               <option>003</option>

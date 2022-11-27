@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import About from "../../component/About/About";
 import Blog from "../../component/Blog/Blog";
 import Category from "../../component/Category/Category";
 import AddProduct from "../../component/Dashboard/AddProduct";
@@ -6,6 +7,7 @@ import AllSeller from "../../component/Dashboard/AllSeller";
 import AllUser from "../../component/Dashboard/AllUser";
 import MyOrders from "../../component/Dashboard/MyOrders";
 import MyProduct from "../../component/Dashboard/MyProduct";
+import Payment from "../../component/Dashboard/Payment";
 import ReportToAdmin from "../../component/Dashboard/ReportToAdmin";
 import Home from "../../component/Home/Home/Home";
 import ErrorPage from "../../component/Shared/ErrorPage";
@@ -29,6 +31,10 @@ export const router = createBrowserRouter([
     {
       path : '/blog' ,
        element : <Blog></Blog>
+    },
+    {
+      path : '/about' ,
+       element : <About></About>
     },
     {
       path : '/signIn' , 
@@ -66,6 +72,17 @@ export const router = createBrowserRouter([
     },
     {
       path : '/dashboard/reportToAdmin' , element : <AdminRoute><ReportToAdmin/></AdminRoute>
+    },
+
+    {
+      path : '/dashboard/payment/:id' , element : <Payment></Payment>,
+      loader : ({params}) => fetch(`http://localhost:5000/bookings/${params.id}` , {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("token")}`
+      }
+      })
     }
+
+    
   ]}
 ])

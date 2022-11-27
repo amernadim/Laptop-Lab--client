@@ -27,7 +27,7 @@ const AllSeller = () => {
       method: "PUT",
       headers: {
         "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("token")}`
+        authorization: `Bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify(data),
     })
@@ -42,18 +42,18 @@ const AllSeller = () => {
 
   const handleDelete = (email) => {
     fetch(`http://localhost:5000/user/${email}`, {
-      method : "DELETE",
+      method: "DELETE",
       headers: {
-        authorization: `Bearer ${localStorage.getItem("token")}`
-    }
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
     })
-    .then(res => res.json())
-    .then(data => {
-        if(data.deletedCount > 0){
-            refetch();
-            toast.success(`Seller deleted successfully`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          refetch();
+          toast.success(`Seller deleted successfully`);
         }
-    })
+      });
   };
 
   if (isLoading) {

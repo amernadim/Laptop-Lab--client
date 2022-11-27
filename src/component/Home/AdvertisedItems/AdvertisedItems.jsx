@@ -3,19 +3,19 @@ import Spinner from "../../Shared/Spinner";
 
 const AdvertisedItems = () => {
   const [products, setProducts] = useState([]);
-  const [loading,setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch("http://localhost:5000/products")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
-        setLoading(false)
+        setLoading(false);
       });
   }, []);
 
-  if(loading) {
-    return <Spinner/>
+  if (loading) {
+    return <Spinner />;
   }
 
   return (
@@ -121,4 +121,3 @@ const AdvertisedItems = () => {
 };
 
 export default AdvertisedItems;
-

@@ -1,27 +1,29 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 import Spinner from "../Shared/Spinner";
 
 const MyOrders = () => {
   const { user } = useContext(AuthContext);
 
-  const { data = [] ,isLoading } = useQuery({
+  const { data = [], isLoading } = useQuery({
     queryKey: ["booking"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/booking/${user?.email}` , {
+      const res = await fetch(`http://localhost:5000/booking/${user?.email}`, {
         headers: {
           "content-type": "application/json",
-          authorization: `Bearer ${localStorage.getItem("token")}`
+          authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
+
       const data = await res.json();
       return data;
     },
   });
 
-  if(isLoading) {
-    return <Spinner/>
+  if (isLoading) {
+    return <Spinner />;
   }
 
   // console.log(data);
@@ -43,31 +45,32 @@ const MyOrders = () => {
         </thead>
         <tbody>
           {/* <!-- row 1 --> */}
-          {
-            data.map((book, i) => <tr key={i}>
-            <td>
-              <div className="avatar">
-                <div className="mask mask-squircle w-12 h-12">
-                  <img
-                    src={book.productImg}
-                    alt="#"
-                  />
+          {data.map((book, i) => (
+            <tr key={i}>
+              <td>
+                <div className="avatar">
+                  <div className="mask mask-squircle w-12 h-12">
+                    <img src={book?.productImg} alt="#" />
+                  </div>
                 </div>
-              </div>
-            </td>
+              </td>
 
-            <td>
-              <h3 className="font-bold">{book.productName}</h3>
-            </td>
+              <td>
+                <h3 className="font-bold">{book?.productName}</h3>
+              </td>
 
-            <td>
-              <p>{book.productPrice}</p>
-            </td>
-            <th>
-              <button className="btn btn-sm bg-gradient-to-br from-lime-500 via-lime-600 to-green-700 text-white">Pay</button>
-            </th>
-          </tr>) 
-          }
+              <td>
+                <p>{book?.productPrice}</p>
+              </td>
+              <th>
+                <Link to={`/dashboard/payment/${book?.productId}`}>
+                  <button className="btn btn-sm bg-gradient-to-br from-lime-500 via-lime-600 to-green-700 text-white">
+                    Pay
+                  </button>
+                </Link>
+              </th>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
