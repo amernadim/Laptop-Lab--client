@@ -1,11 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import toast from 'react-hot-toast';
+import useAccessToken from '../../hooks/useAccessToken';
 
 const SignUp = () => {
   const { createUser, updateUserProfile} = useContext(AuthContext);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [createdUserEmail, setCreatedUserEmail] = useState('')
+  const [token] = useAccessToken(createdUserEmail);
 
   const handleSubmit = event => {
      event.preventDefault()
@@ -26,7 +29,6 @@ const SignUp = () => {
         toast.success('SignUp Success')
         form.reset()
         saveUserTodb(email,name,role)
-        navigate('/')
       })
       .catch(error => {
         toast.error(error.message)
@@ -38,6 +40,10 @@ const SignUp = () => {
     })
 
   }
+
+  if(token){
+    navigate('/');
+  } 
 
 
 const saveUserTodb = (email,name, role) =>{
@@ -52,6 +58,7 @@ const saveUserTodb = (email,name, role) =>{
   .then(res => res.json())
   .then(data =>{
       console.log(data);
+      setCreatedUserEmail(email);
   })
 
  }
