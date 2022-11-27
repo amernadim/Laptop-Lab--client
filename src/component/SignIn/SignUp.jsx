@@ -7,8 +7,8 @@ import useAccessToken from '../../hooks/useAccessToken';
 const SignUp = () => {
   const { createUser, updateUserProfile} = useContext(AuthContext);
   const navigate = useNavigate();
-  const [createdUserEmail, setCreatedUserEmail] = useState('')
-  const [token] = useAccessToken(createdUserEmail);
+  const [userEmail, setUserEmail] = useState('')
+  const [token] = useAccessToken(userEmail);
 
   const handleSubmit = event => {
      event.preventDefault()
@@ -58,7 +58,7 @@ const saveUserTodb = (email,name, role) =>{
   .then(res => res.json())
   .then(data =>{
       console.log(data);
-      setCreatedUserEmail(email);
+      setUserEmail(email);
   })
 
  }

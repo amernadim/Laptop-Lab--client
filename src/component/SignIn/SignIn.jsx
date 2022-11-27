@@ -1,11 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import googlePng from "../../assets/image/google.png";
 import { AuthContext } from "../../context/AuthProvider";
 import toast from "react-hot-toast";
+import useAccessToken from "../../hooks/useAccessToken";
 
 const SignIn = () => {
   const { signIn, signInWithGoogle } = useContext(AuthContext);
+  
+  const [userEmail,setUserEmail] = useState('');
+  const [token] = useAccessToken(userEmail);
+
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -21,7 +26,8 @@ const SignIn = () => {
         const user = result.user;
         toast.success("Login Successfully");
         form.reset();
-        navigate(from, { replace: true });
+        // navigate(from, { replace: true });
+        setUserEmail(email)
         console.log(user);
       })
       .catch((error) => {
@@ -38,7 +44,8 @@ const SignIn = () => {
         toast.success("Login Successfully");
         const role = "User";
         saveUserToDb(user?.email, user?.displayName, role);
-        navigate(from, { replace: true });
+        setUserEmail(user?.email)
+        // navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error);
@@ -57,12 +64,16 @@ const SignIn = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        console.log(data);       
       });
   };
 
+  if(token) {
+    navigate(from, {replace: true});
+  }
+
   return (
-    <div className="flex max-w-md p-4 rounded-md border-2 shadow-md mx-auto mb-5 shadow-2xl ">
+    <div className="flex max-w-md p-4 rounded-md border-2 mx-auto mb-5 shadow-2xl ">
       <form onSubmit={handleSubmit} className="space-y-2 mx-auto">
         <h1 className="my-1 text-center text-3xl font-bold">Sign In</h1>
         <div className="space-y-4">
