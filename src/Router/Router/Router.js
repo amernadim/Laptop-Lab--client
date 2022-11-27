@@ -13,6 +13,7 @@ import SignIn from "../../component/SignIn/SignIn";
 import SignUp from "../../component/SignIn/SignUp";
 import DashboardLayout from "../../layout/DashboardLayout";
 import Root from "../../layout/Root";
+import AdminRoute from "../AdminRoute/AdminRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
@@ -58,13 +59,13 @@ export const router = createBrowserRouter([
       path : '/dashboard/addProduct' , element : <AddProduct/>
     },
     {
-      path : '/dashboard/allSeller' , element : <AllSeller/>
+      path : '/dashboard/allSeller' , element : <AdminRoute><AllSeller/></AdminRoute>
     },
     {
-      path : '/dashboard/allUser' , element : <AllUser/>
+      path : '/dashboard/allUser' , element : <AdminRoute><AllUser/></AdminRoute>
     },
     {
-      path : '/dashboard/reportToAdmin' , element : <ReportToAdmin/>
+      path : '/dashboard/reportToAdmin' , element : <AdminRoute><ReportToAdmin/></AdminRoute>
     }
   ]}
 ])
