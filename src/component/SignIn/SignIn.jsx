@@ -15,6 +15,12 @@ const SignIn = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
+  useEffect(() => {
+    if (token) {
+      navigate(from, { replace: true });
+    }
+  }, [token, navigate]);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -26,7 +32,6 @@ const SignIn = () => {
         const user = result.user;
         toast.success("Login Successfully");
         form.reset();
-        // navigate(from, { replace: true });
         setUserEmail(email);
         console.log(user);
       })
@@ -46,7 +51,6 @@ const SignIn = () => {
         saveUserToDB(user?.email, user?.displayName, role);
         // access token
         setUserEmail(user?.email);
-        // navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error);
@@ -69,18 +73,9 @@ const SignIn = () => {
       });
   };
 
-  // if(token) {
-  //   navigate(from, {replace: true});
-  // }
-
-  useEffect(() => {
-    if (token) {
-      navigate(from, { replace: true });
-    }
-  }, [token, navigate]);
 
   return (
-    <div className="flex max-w-md p-4 rounded-md border-2 mx-auto mb-5 shadow-2xl ">
+    <div className="flex max-w-md p-4 rounded-md border-2 mx-auto my-7 shadow-2xl ">
       <form onSubmit={handleSubmit} className="space-y-2 mx-auto">
         <h1 className="my-1 text-center text-3xl font-bold">Sign In</h1>
         <div className="space-y-4">

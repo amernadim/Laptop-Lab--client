@@ -1,5 +1,4 @@
 import React from 'react';
-// import Spinner from '../../Shared/Spinner';
 import AdvertisedItems from '../AdvertisedItems/AdvertisedItems';
 import Banner from '../Banner/Banner';
 import CoustomersSay from '../CoustomersSay/CoustomersSay';

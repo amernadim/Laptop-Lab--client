@@ -28,18 +28,18 @@ const Navbar = () => {
       </li>
       <li>
         <Link
-          to="/about"
-          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-orange-500"
-        >
-          About Us
-        </Link>
-      </li>
-      <li>
-        <Link
           to="/blog"
           className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-orange-500"
         >
           Blog
+        </Link>
+      </li>
+      <li>
+        <Link
+          to="/about"
+          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-orange-500"
+        >
+          About Us
         </Link>
       </li>
       {user?.uid && (
@@ -69,7 +69,7 @@ const Navbar = () => {
       ) : (
         <>
           <li>
-            <Link to="/signIn" className="btn btn-sm ">
+            <Link to="/signIn" className="btn btn-sm btn-outline">
               Sign In
             </Link>
           </li>

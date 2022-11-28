@@ -14,8 +14,8 @@ const Category = () => {
   }
 
   return (
-    <div className="w-11/12 mx-auto my-5">
-      <div>
+    <div className="w-11/12 mx-auto my-5 mt-[90px]">
+      <div className="my-5"> 
         <h2 className="text-center text-2xl font-semibold mt-5">Laptop</h2>
       </div>
 

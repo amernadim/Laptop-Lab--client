@@ -13,25 +13,7 @@ const CheckoutForm = ({ data }) => {
 
   const { productName, productPrice, _id, productId, buyerEmail } = data;
   const price = parseInt(productPrice);
-  // console.log(price);
   
-  //   useEffect(() => {
-  //     // Create PaymentIntent as soon as the page loads
-  //     fetch("https://localhost:5000/create-payment-intent", {
-  //         method: "POST",
-  //         headers: {
-  //             "Content-Type": "application/json",
-  //             authorization: `Bearer ${localStorage.getItem("token")}`
-  //         },
-  //         body: JSON.stringify({productPrice}),
-  //     })
-  //         .then((res) => res.json())
-  //         .then((data) => {
-  //             setClientSecret(data.clientSecret)
-  //             console.log(data.clientSecret);
-  //         });
-  // }, [productPrice]);
-
   useEffect(() => {
     fetch("https://laptop-lab-server.vercel.app/create-payment-intent", {
       method: "POST",
@@ -89,10 +71,8 @@ const CheckoutForm = ({ data }) => {
     if (confirmError) {
       setCardError(confirmError.message);
     }
-    // console.log(paymentIntent);
     if (paymentIntent.status === "succeeded") {
-      console.log("card info", card);
-      // store payment info in the database
+      // console.log("card info", card);
       const payment = {
         price,
         transactionId: paymentIntent.id,
@@ -100,8 +80,8 @@ const CheckoutForm = ({ data }) => {
         bookingId: _id,
         productId
       };
-      console.log(payment);
-      fetch("https://laptop-lab-server.vercel.app/payments", {
+      // console.log(payment);
+      fetch("https://laptop-lab-server-amernadim.vercel.app/payments", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -113,7 +93,7 @@ const CheckoutForm = ({ data }) => {
         .then((data) => {
           console.log(data);
           if (data.insertedId) {
-            setSuccess("Congrats! your payment completed");
+            setSuccess("Your payment completed");
             setTransactionId(paymentIntent.id);
           }
         });
@@ -123,7 +103,7 @@ const CheckoutForm = ({ data }) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="my-4 border-gray-500 border-2 p-5 border-dashed rounded-md">
         <CardElement
           options={{
             style: {
@@ -140,9 +120,8 @@ const CheckoutForm = ({ data }) => {
             },
           }}
         />
-        {/* disabled={!stripe || !clientSecret || processing} */}
         <button
-          className="btn btn-sm mt-4 btn-primary"
+          className="btn btn-sm mt-4  bg-gradient-to-br from-lime-500 via-lime-600 to-green-700 text-white"
           type="submit"
           disabled={!stripe || !clientSecret || processing}
         >
