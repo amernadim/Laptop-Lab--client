@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { XMarkIcon, Bars3Icon, PlayIcon } from "@heroicons/react/24/solid";
 import { AuthContext } from "../../context/AuthProvider";
 import toast from "react-hot-toast";
+import logo from '../../assets/image/laptop.png';
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
@@ -87,11 +88,14 @@ const Navbar = () => {
   return (
     <div className="px-4 py-5 mx-auto fixed top-0 w-full lg:max-w-screen-xl md:px-24 lg:px-8 bg-base-200 z-40">
       <div className="relative flex items-center justify-between">
+        <div className="flex items-center">
+        <img src={logo} alt="" className="w-8 h-8"/>
         <Link to="/" className="inline-flex items-center">
           <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
             Laptop Lab
           </span>
         </Link>
+        </div>
         <ul className="flex items-center hidden space-x-8 lg:flex">
           {menuItem}
         </ul>
