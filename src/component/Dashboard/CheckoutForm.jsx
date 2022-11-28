@@ -12,7 +12,9 @@ const CheckoutForm = ({ data }) => {
   const elements = useElements();
 
   const { productName, productPrice, _id, productId, buyerEmail } = data;
-
+  const price = parseInt(productPrice);
+  // console.log(price);
+  
   //   useEffect(() => {
   //     // Create PaymentIntent as soon as the page loads
   //     fetch("https://localhost:5000/create-payment-intent", {
@@ -31,20 +33,20 @@ const CheckoutForm = ({ data }) => {
   // }, [productPrice]);
 
   useEffect(() => {
-    fetch("https://localhost:5000/create-payment-intent", {
+    fetch("http://localhost:5000/create-payment-intent", {
       method: "POST",
       headers: {
         "content-type": "application/json",
         authorization: `Bearer ${localStorage.getItem("token")}`,
       },
-      body: JSON.stringify({ productPrice }),
+      body: JSON.stringify({price}),
     })
       .then((res) => res.json())
       .then((data) => {
         setClientSecret(data.clientSecret);
-        console.log(data.clientSecret);
+        // console.log(data.clientSecret);
       });
-  }, [productPrice]);
+  }, [price]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -79,6 +81,7 @@ const CheckoutForm = ({ data }) => {
           billing_details: {
             name: productName,
             email: buyerEmail,
+            
           },
         },
       });
@@ -91,12 +94,14 @@ const CheckoutForm = ({ data }) => {
       console.log("card info", card);
       // store payment info in the database
       const payment = {
-        productPrice,
+        price,
         transactionId: paymentIntent.id,
         buyerEmail,
         bookingId: _id,
+        productId
       };
-      fetch("https://laptop-lab-server.vercel.app/payments", {
+      console.log(payment);
+      fetch("http://localhost:5000/payments", {
         method: "POST",
         headers: {
           "content-type": "application/json",

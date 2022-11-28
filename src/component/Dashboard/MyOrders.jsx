@@ -66,11 +66,18 @@ const MyOrders = () => {
                 <p>{book?.productPrice}</p>
               </td>
               <th>
-                <Link to={`/dashboard/payment/${book?.productId}`}>
+                { book?.productPrice && !book?.paid &&
+                  <Link to={`/dashboard/payment/${book?.productId}`}>
                   <button className="btn btn-sm bg-gradient-to-br from-lime-500 via-lime-600 to-green-700 text-white">
                     Pay
                   </button>
-                </Link>
+                </Link>               
+                }
+                { book?.productPrice && book?.paid &&
+                  <button className="btn btn-sm">
+                    Paid
+                  </button>
+                }
               </th>
             </tr>
           ))}

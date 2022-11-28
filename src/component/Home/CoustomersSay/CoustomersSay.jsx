@@ -28,13 +28,13 @@ const CoustomersSay = () => {
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 512 512"
               fill="currentColor"
-              className="absolute bottom-0 right-0 w-8 h-8 dark:text-gray-700"
+              className="absolute bottom-0 right-0 w-8 h-8 text-gray-700"
             >
               <path d="M280,185.143V416H496V16H457.6ZM464,384H312V198.857L464,54.1Z"></path>
               <path d="M232,16H193.6L16,185.143V416H232ZM200,384H48V198.857L200,54.1Z"></path>
             </svg>
           </div>
-          <span className="w-12 h-1 my-2 rounded-lg dark:bg-violet-400"></span>
+          <span className="w-12 h-1 my-2 rounded-lg  bg-gradient-to-br from-lime-500 via-lime-600 to-green-700"></span>
           <p>Jhankar Mahbub</p>
         </div>
         <div className="flex flex-col items-center max-w-lg mx-12 lg:mx-0">
@@ -74,7 +74,7 @@ const CoustomersSay = () => {
               ></path>
             </svg>
           </div>
-          <span className="w-12 h-1 my-2 rounded-lg dark:bg-violet-400"></span>
+          <span className="w-12 h-1 my-2 rounded-lg  bg-gradient-to-br from-lime-500 via-lime-600 to-green-700"></span>
           <p>Azizul Islam Milton</p>
         </div>
       </div>
