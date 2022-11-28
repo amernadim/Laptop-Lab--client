@@ -33,7 +33,7 @@ const CheckoutForm = ({ data }) => {
   // }, [productPrice]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/create-payment-intent", {
+    fetch("https://laptop-lab-server.vercel.app/create-payment-intent", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -101,7 +101,7 @@ const CheckoutForm = ({ data }) => {
         productId
       };
       console.log(payment);
-      fetch("http://localhost:5000/payments", {
+      fetch("https://laptop-lab-server.vercel.app/payments", {
         method: "POST",
         headers: {
           "content-type": "application/json",
