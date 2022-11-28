@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 import toast from "react-hot-toast";
 import useAccessToken from "../../hooks/useAccessToken";
@@ -9,6 +9,8 @@ const SignUp = () => {
   const navigate = useNavigate();
   const [userEmail, setUserEmail] = useState("");
   const [token] = useAccessToken(userEmail);
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -17,7 +19,6 @@ const SignUp = () => {
     const name = form.name.value;
     const password = form.password.value;
     const role = form.loginAs.value;
-    //  console.log(email,name,password);
 
     createUser(email, password)
       .then((reult) => {
@@ -40,15 +41,12 @@ const SignUp = () => {
       });
   };
 
-  // if(token){
-  //   navigate('/');
-  // }
-
   useEffect(() => {
     if (token) {
-      navigate("/");
+      navigate(from, { replace: true });
     }
   }, [token, navigate]);
+
 
   const saveUserToDB = (email, name, role) => {
     const user = { email, name, role };
