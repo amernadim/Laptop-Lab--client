@@ -30,7 +30,7 @@ const ProductsCategories = () => {
       <h2 className="text-center text-3xl font-semibold mt-5">
         Categories
       </h2>
-      <div className="cetegorise md:flex justify-between w-11/12 mx-auto gap-2 mt-5 max-lg:2xl">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 w-11/12 mx-auto gap-2 mt-5 max-lg:2xl">
         {categories.map((category, i) => (
           <ProductCategory key={i} category={category}></ProductCategory>
         ))}

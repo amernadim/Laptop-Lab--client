@@ -32,7 +32,7 @@ const DashboardLayout = () => {
             <ul className="menu p-4 w-80 text-base-content">
               {/* <!-- Sidebar content here --> */}
 
-            {  isUser &&
+            { isUser &&
             <li className="btn btn-md mt-2">
                 <Link className="" to="/dashboard/myOrders">
                   My Order
@@ -51,7 +51,7 @@ const DashboardLayout = () => {
               </>
             }
 
-              {isAdmin && (
+              { isAdmin && (
                 <>
                   <li className="btn btn-md mt-2">
                     <Link to="/dashboard/allSeller">All Sellers</Link>
