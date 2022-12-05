@@ -8,10 +8,10 @@ const Category = () => {
   const data = useLoaderData();
   const [product, setProduct] = useState(null);
 
-  const navigation = useNavigation();
-  if (navigation.state === "loading") {
-    return <Spinner />;
-  }
+  // const navigation = useNavigation();
+  // if (navigation.state === "loading") {
+  //   return <Spinner />;
+  // }
 
   return (
     <div className="w-11/12 mx-auto my-5 mt-[90px]">

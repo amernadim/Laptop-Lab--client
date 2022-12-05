@@ -28,7 +28,7 @@ const ProductsCategories = () => {
   return (
     <div className="mt-5">
       <h2 className="text-center text-3xl font-semibold mt-5">
-        Laptop Categories
+        Categories
       </h2>
       <div className="cetegorise md:flex justify-between w-11/12 mx-auto gap-2 mt-5 max-lg:2xl">
         {categories.map((category, i) => (

@@ -24,7 +24,7 @@ const Product = ({ product: data, setProduct }) => {
     _id,
   } = data;
 
-  const handleReport = (id) => {
+  const handleReport = id => {
     const data = {
       reportStatus: "reported",
     };
