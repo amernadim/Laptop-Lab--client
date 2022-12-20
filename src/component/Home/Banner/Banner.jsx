@@ -2,7 +2,7 @@ import React from "react";
 
 const Banner = () => {
   return (
-    <div className="carousel w-full ">
+    <div className="carousel w-full h-[65vh] sm:h-auto">
       <div id="slide1" className="carousel-item relative w-full">
         <div className="w-full">
           <img
@@ -12,7 +12,7 @@ const Banner = () => {
           />
 
           <div className="absolute top-1/3 md:right-1/3 justify-center items-center">
-            <h2 className="text-3xl text-white font-bold text-gray sm:text-4xl text-center">
+            <h2 className="text-3xl text-white font-bold text-gray sm:text-4xl text-center backdrop-blur-sm p-4">
               Freah Condition used
               <br className="hidden md:block" /> Laptop Collection
             </h2>
@@ -40,7 +40,7 @@ const Banner = () => {
           />
 
           <div className="absolute top-1/3 md:right-1/3 justify-center items-center">
-            <h2 className="text-3xl font-bold text-black sm:text-4xl text-center">
+            <h2 className="text-3xl font-bold text-black sm:text-4xl text-center backdrop-blur-sm p-4">
               Freah Condition used
               <br className="hidden md:block" /> Laptop Collection
             </h2>
@@ -67,7 +67,7 @@ const Banner = () => {
             alt="#"
           />
           <div className="absolute top-1/3 md:right-1/3 justify-center items-center">
-            <h2 className="text-neutral text-3xl font-bold text-gray sm:text-4xl text-center">
+            <h2 className="text-neutral text-3xl font-bold text-gray sm:text-4xl text-center backdrop-blur-sm p-4">
               Freah Condition used
               <br className="hidden md:block" /> Laptop Collection
             </h2>
