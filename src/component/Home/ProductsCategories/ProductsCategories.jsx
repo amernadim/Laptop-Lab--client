@@ -27,7 +27,7 @@ const ProductsCategories = () => {
 
   return (
     <div className="mt-5">
-      <h2 className="text-center text-4xl font-bold mt-5">
+      <h2 className="text-center text-3xl font-bold mt-5">
         Categories
       </h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 w-11/12 mx-auto gap-2 mt-5 max-lg:2xl">

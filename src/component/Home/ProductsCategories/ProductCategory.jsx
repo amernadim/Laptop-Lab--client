@@ -12,10 +12,10 @@ const ProductCategory = ({ category }) => {
   return (
     <div
       onClick={() => handleNavigate(categoryId)}
-      className="card bg-base-100 shadow-xl hover:bg-white"
+      className="card bg-base-100 shadow-xl hover:bg-white hover:-translate-y-6 "
     >
       <div className="card-body justify-center items-center">
-        <img className="w-16 h-16" src={categoryImg} alt="" />
+        <img className="h-16" src={categoryImg} alt="" />
         <p className="text-2xl font-semibold ">{cateroryName}</p>
       </div>
     </div>

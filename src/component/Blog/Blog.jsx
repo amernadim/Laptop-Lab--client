@@ -1,10 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Blog = () => {
   return (
     <ul className="p-4 lg:p-8 dark:bg-gray-800 dark:text-gray-10  0">
-      <li>
+      <li data-aos="zoom-in" data-aos-duration="1500">
         <article>
           <Link
             rel="noopener noreferrer"
@@ -28,7 +30,7 @@ const Blog = () => {
           </Link>
         </article>
       </li>
-      <li>
+      <li data-aos="zoom-in-up" data-aos-duration="1500">
         <article>
           <Link
             rel="noopener noreferrer"
@@ -51,7 +53,7 @@ const Blog = () => {
           </Link>
         </article>
       </li>
-      <li>
+      <li data-aos="zoom-in" data-aos-duration="1500">
         <article>
           <Link
             rel="noopener noreferrer"
@@ -80,7 +82,7 @@ const Blog = () => {
           </Link>
         </article>
       </li>
-      <li>
+      <li data-aos="zoom-in-up" data-aos-duration="1500">
         <article>
           <Link
             rel="noopener noreferrer"
@@ -106,5 +108,7 @@ const Blog = () => {
     </ul>
   );
 };
+
+AOS.init();
 
 export default Blog;

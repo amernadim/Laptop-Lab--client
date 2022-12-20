@@ -22,7 +22,7 @@ const AdvertisedItems = () => {
     <div>
       {products.length > 0 && (
         <>
-          <h2 className="text-center text-4xl font-bold mt-5">
+          <h2 className="text-center text-3xl font-bold mt-5">
             Advertised Item
           </h2>
 

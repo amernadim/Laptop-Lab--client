@@ -104,13 +104,13 @@ const Navbar = () => {
         </ul>
 
         {/* dashboard open icon */}
-        <label
+        {/* <label
           tabIndex={2}
           htmlFor="dashboard-drawer"
           className="btn btn-ghost lg:hidden"
         >
           <PlayIcon className="w-6 h-6" />
-        </label>
+        </label> */}
 
         <div className="lg:hidden z-20">
           <button aria-label="Open Menu" onClick={() => setIsMenuOpen(true)}>

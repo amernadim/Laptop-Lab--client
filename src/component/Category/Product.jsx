@@ -45,7 +45,7 @@ const Product = ({ product: data, setProduct }) => {
   };
 
   return (
-    <div className="max-w-lg p-4 shadow-md">
+    <div className="max-w-lg p-4 shadow-md" data-aos="zoom-in-up" data-aos-duration="1500">
       <div className="space-y-4">
         <div className="space-y-2">
           <img

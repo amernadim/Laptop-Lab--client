@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
+import DashNav from "../component/Shared/DashNav";
 import Navbar from "../component/Shared/Navbar";
 import { AuthContext } from "../context/AuthProvider";
 import useAdmin from "../hooks/useAdmin";
@@ -12,16 +13,16 @@ const DashboardLayout = () => {
   const [isSeller] = useSeller(user?.email);
   const [isUser] = useUser(user?.email);
   return (
-    <div>
+    <>
       <div>
-        <div className="drawer drawer-mobile mt-[72px]">
-        <Navbar />
+         <DashNav></DashNav>
+        <div className="drawer drawer-mobile ">
           <input
             id="dashboard-drawer"
             type="checkbox"
             className="drawer-toggle"
           />
-          <div className="drawer-content pt-[20px] bg-base-200">
+          <div className="drawer-content pt-[20px] bg-base-200 mt-[72px]">
             <Outlet />
           </div>
           <div className="drawer-side">
@@ -29,8 +30,14 @@ const DashboardLayout = () => {
               htmlFor="dashboard-drawer"
               className="drawer-overlay"
             ></label>
-            <ul className="menu p-4 w-80 text-base-content">
+            <ul className="menu p-4 w-80 text-base-content mt-[72px]">
               {/* <!-- Sidebar content here --> */}
+
+              <li className="btn btn-md mt-2">
+                <Link className="" to="/home">
+                 Home
+                </Link>
+              </li>
 
             { isUser &&
             <li className="btn btn-md mt-2">
@@ -68,7 +75,7 @@ const DashboardLayout = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

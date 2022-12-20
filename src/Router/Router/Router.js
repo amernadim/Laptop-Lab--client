@@ -9,6 +9,7 @@ import MyOrders from "../../component/Dashboard/MyOrders";
 import MyProduct from "../../component/Dashboard/MyProduct";
 import Payment from "../../component/Dashboard/Payment";
 import ReportToAdmin from "../../component/Dashboard/ReportToAdmin";
+import WelcomeDash from "../../component/Dashboard/WelcomeDash";
 import Home from "../../component/Home/Home/Home";
 import ErrorPage from "../../component/Shared/ErrorPage";
 import SignIn from "../../component/SignIn/SignIn";
@@ -74,6 +75,10 @@ export const router = createBrowserRouter([
     ),
     errorElement: <ErrorPage />,
     children: [
+      {
+        path: "/dashboard",
+        element: <WelcomeDash />,
+      },
       {
         path: "/dashboard/myOrders",
         element: <MyOrders />,
